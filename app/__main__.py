@@ -1,6 +1,6 @@
 # --------- SCHEDULE PROJECT ---------
 # ------- Jadwiga Swierczynska -------
-# ------------ 19.12.2023 ------------
+# ------------ 30.12.2023 ------------
 
 """Command line application - runs the server \
     and the CLI for the schedule application"""
