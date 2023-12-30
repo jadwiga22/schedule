@@ -1,6 +1,6 @@
 # schedule
 
-Schedule - command-line application for managing events, participants and places. Provides direct access to database or via API. 
+Schedule - Python command-line application for managing events, participants and places. Provides direct access to database or via API. 
 
 
 ## Running the application
