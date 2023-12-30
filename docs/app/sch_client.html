@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>app.sch_client API documentation</title>
+<meta name="description" content="CLI client - performs database actions directly or through API" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.sch_client</code></h1>
+</header>
+<section id="section-intro">
+<p>CLI client - performs database actions directly or through API</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># --------- SCHEDULE PROJECT ---------
+# ------- Jadwiga Swierczynska -------
+# ------------ 30.12.2023 ------------
+
+&#34;&#34;&#34;CLI client - performs database actions directly or through API&#34;&#34;&#34;
+
+import argparse
+import datetime
+import sch_db_tools as dbt
+import sch_print_tools as prt
+import requests
+from typing import Union, Any
+import sys
+
+SERVER = &#34;http://localhost:5000/&#34;
+
+# PARSING ------------------------------------
+
+
+def parse_time(s: str) -&gt; datetime.datetime:
+    &#34;&#34;&#34;Parse time and return `datetime.datetime` object.
+
+    Arguments:
+
+    - `s` -- string in format `dd-mm-yyyy hh:mm`&#34;&#34;&#34;
+
+    return datetime.datetime.strptime(s, &#34;%d-%m-%Y %H:%M&#34;)
+
+
+def parse_option_values(
+        parser: argparse.ArgumentParser, properties: dict[str, str],
+        possibles: list[str], requirements: list[str],
+        list_parse: list[str], date_parse: list[str],
+        int_parse: list[str]) -&gt; None:
+    &#34;&#34;&#34;Create options in command-line argument parser.
+
+    Arguments:
+
+    - `parser` - `argparse.ArgumentParser` object
+    - `properties` - dictionary with descritpion of properties (options)\
+        that will be displayed (i. e. names of the options\
+             are the keys and the values are the descriptions)
+    - `possibles` - possible options \
+        (all keys from the `properties` dictionary)
+    - `requirements` - list of required options&#39; names
+    - `list_parse` - list of options&#39; names that should be parsed as a list
+    - `date_parse` - list of options&#39; names that should be parsed as a date
+    - `int_parse` - list of options&#39; names that should be parsed as a date
+    &#34;&#34;&#34;
+
+    for p in possibles:
+        if p in list_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                nargs=&#34;*&#34;)
+        elif p in int_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                type=int)
+        elif p in date_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                type=parse_time)
+        else:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p])
+
+
+def parse() -&gt; argparse.Namespace:
+    &#34;&#34;&#34;Parse arguments from command line and return them as a dictionary.
+    &#34;&#34;&#34;
+
+    properties: dict[str, dict[str, str]] = {
+        &#34;people&#34;: dbt.PersonWorker.properties,
+        &#34;events&#34;: dbt.EventWorker.properties,
+        &#34;places&#34;: dbt.PlaceWorker.properties
+    }
+    requirements: dict[str, dict[str, list[str]]] = {
+        t: {
+            &#34;add&#34;: [p for p in properties[t] if p != &#34;id&#34;],
+            &#34;update&#34;: [&#34;id&#34;],
+            &#34;lookup&#34;: [&#34;name&#34;] if t != &#34;people&#34; else [&#34;surname&#34;],
+            &#34;info&#34;: [&#34;id&#34;],
+            &#34;info_all&#34;: [],
+            &#34;delete&#34;: [&#34;id&#34;]
+        } for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]
+    }
+    possibles: dict[str, dict[str, list[str]]] = {
+        t: {
+            a: (requirements[t][a]
+                if a != &#34;update&#34; else list(properties[t].keys()))
+            for a in requirements[t]
+        } for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]
+    }
+
+    list_parse: list[str] = [&#34;participates&#34;, &#34;invitees&#34;]
+    date_parse: list[str] = [&#34;start_date&#34;, &#34;end_date&#34;]
+    int_parse: list[str] = [&#34;street_number&#34;, &#34;place_id&#34;, &#34;id&#34;]
+
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(
+        prog=sys.argv[0],
+        description=&#34;Command-line application for managing events,\
+            participants and places of events. \
+                Directly performing actions on databases or through API.&#34;,
+        epilog=&#34;Have fun!&#34;
+    )
+
+    parser.add_argument(&#34;-a&#34;, &#34;--api&#34;, action=&#34;store_true&#34;,
+                        help=&#34;Get data using API&#34;)
+
+    subparser_action = parser.add_subparsers(
+        description=&#34;Action to be performed&#34;,
+        required=True,
+        dest=&#34;action&#34;,
+        help=&#34;add - adding new record, \
+            update - updating a record, \
+            lookup - lookup a record with given name \
+                (unavailable through API), \
+            info - get data of a record with given id, \
+            info_all - get data of all records (unavailable through API), \
+            delete - remove a record with given id&#34;)
+
+    for a in [&#34;add&#34;, &#34;update&#34;, &#34;lookup&#34;, &#34;info&#34;, &#34;info_all&#34;, &#34;delete&#34;]:
+        subparser = subparser_action.add_parser(
+            a, description=f&#34;Performing action {a}&#34;)
+        subsubp = subparser.add_subparsers(
+            description=f&#34;Table for which action {a} will be performed&#34;,
+            dest=&#34;table&#34;,
+            required=True,
+            help=&#34;people - participants data (e.g. name, surname), \
+                    events - events data (e.g. name, dates), \
+                    places - places of the events data (e.g. name, street)&#34;)
+        for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]:
+            subsubsubp = subsubp.add_parser(
+                t,
+                description=f&#34;Performing action {a} on {t} table&#34;)
+            parse_option_values(
+                subsubsubp, properties[t], possibles[t][a],
+                requirements[t][a], list_parse, date_parse, int_parse)
+
+    args: argparse.Namespace = parser.parse_args()
+    return args
+
+
+def api_access(instr: dict[str, Any]) -&gt; dict[str, Any] | list[dict[str, Any]]:
+    &#34;&#34;&#34;Access database through API.
+
+    Arguments:
+
+    - `instr` -- dictionary containing parameters of the database query \
+        ( `action`, `table` and parameters required by the database function)
+    &#34;&#34;&#34;
+
+    action = instr[&#34;action&#34;]
+    table = instr[&#34;table&#34;]
+
+    # fixing format
+    if &#34;start_date&#34; in instr and instr[&#34;start_date&#34;] is not None:
+        instr[&#34;start_date&#34;] = instr[&#34;start_date&#34;].strftime(&#34;%d-%m-%Y %H:%M&#34;)
+    if &#34;end_date&#34; in instr and instr[&#34;end_date&#34;] is not None:
+        instr[&#34;end_date&#34;] = instr[&#34;end_date&#34;].strftime(&#34;%d-%m-%Y %H:%M&#34;)
+
+    reqs: dict[str, Any] = {
+        &#34;add&#34;: requests.put,
+        &#34;update&#34;: requests.post,
+        &#34;info&#34;: requests.get,
+        &#34;delete&#34;: requests.delete
+    }
+
+    res: requests.Response = reqs[action](SERVER+table+&#34;/&#34;, params=instr)
+
+    return res.json()
+
+
+def direct_access(instr: dict[str, Any]) -&gt; dict[str, Any] \
+        | list[dict[str, Any]]:
+    &#34;&#34;&#34;Directly access the database.
+
+    Arguments:
+
+    - `instr` - dictionary containing parameters of the database query \
+        (`action`, `table` and parameters required by the database function)
+    &#34;&#34;&#34;
+
+    s = dbt.act(instr)
+    return s
+
+
+def eval(instr: dict[str, Any]) -&gt; None:
+    &#34;&#34;&#34;Evaluate given instruction.
+
+    Arguments:
+
+    - `instr` - dictionary containing parameters of the database query \
+        (e.g. `api`, `action`, `table` and parameters \
+            required by the database function)
+    &#34;&#34;&#34;
+
+    table = instr[&#34;table&#34;]
+    api = instr[&#34;api&#34;]
+
+    if api:
+        s = api_access(instr)
+    else:
+        s = direct_access(instr)
+
+    prt.printer(s, table)
+
+
+def main():
+    args = vars(parse())
+    # print(&#34;Parsed args&#34;, args, &#34;\n-------------------------\n&#34;)
+
+    eval(args)
+
+    print(&#34;-------------------------\n\
+| Successfully executed |\n\
+-------------------------&#34;)
+
+
+if __name__ == &#34;__main__&#34;:
+    main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="app.sch_client.api_access"><code class="name flex">
+<span>def <span class="ident">api_access</span></span>(<span>instr: dict[str, typing.Any]) ‑> dict[str, typing.Any] | list[dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Access database through API.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>instr</code> &ndash; dictionary containing parameters of the database query
+( <code>action</code>, <code>table</code> and parameters required by the database function)</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def api_access(instr: dict[str, Any]) -&gt; dict[str, Any] | list[dict[str, Any]]:
+    &#34;&#34;&#34;Access database through API.
+
+    Arguments:
+
+    - `instr` -- dictionary containing parameters of the database query \
+        ( `action`, `table` and parameters required by the database function)
+    &#34;&#34;&#34;
+
+    action = instr[&#34;action&#34;]
+    table = instr[&#34;table&#34;]
+
+    # fixing format
+    if &#34;start_date&#34; in instr and instr[&#34;start_date&#34;] is not None:
+        instr[&#34;start_date&#34;] = instr[&#34;start_date&#34;].strftime(&#34;%d-%m-%Y %H:%M&#34;)
+    if &#34;end_date&#34; in instr and instr[&#34;end_date&#34;] is not None:
+        instr[&#34;end_date&#34;] = instr[&#34;end_date&#34;].strftime(&#34;%d-%m-%Y %H:%M&#34;)
+
+    reqs: dict[str, Any] = {
+        &#34;add&#34;: requests.put,
+        &#34;update&#34;: requests.post,
+        &#34;info&#34;: requests.get,
+        &#34;delete&#34;: requests.delete
+    }
+
+    res: requests.Response = reqs[action](SERVER+table+&#34;/&#34;, params=instr)
+
+    return res.json()</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.direct_access"><code class="name flex">
+<span>def <span class="ident">direct_access</span></span>(<span>instr: dict[str, typing.Any]) ‑> dict[str, typing.Any] | list[dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Directly access the database.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>instr</code> - dictionary containing parameters of the database query
+(<code>action</code>, <code>table</code> and parameters required by the database function)</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def direct_access(instr: dict[str, Any]) -&gt; dict[str, Any] \
+        | list[dict[str, Any]]:
+    &#34;&#34;&#34;Directly access the database.
+
+    Arguments:
+
+    - `instr` - dictionary containing parameters of the database query \
+        (`action`, `table` and parameters required by the database function)
+    &#34;&#34;&#34;
+
+    s = dbt.act(instr)
+    return s</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.eval"><code class="name flex">
+<span>def <span class="ident">eval</span></span>(<span>instr: dict[str, typing.Any]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluate given instruction.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>instr</code> - dictionary containing parameters of the database query
+(e.g. <code>api</code>, <code>action</code>, <code>table</code> and parameters
+required by the database function)</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def eval(instr: dict[str, Any]) -&gt; None:
+    &#34;&#34;&#34;Evaluate given instruction.
+
+    Arguments:
+
+    - `instr` - dictionary containing parameters of the database query \
+        (e.g. `api`, `action`, `table` and parameters \
+            required by the database function)
+    &#34;&#34;&#34;
+
+    table = instr[&#34;table&#34;]
+    api = instr[&#34;api&#34;]
+
+    if api:
+        s = api_access(instr)
+    else:
+        s = direct_access(instr)
+
+    prt.printer(s, table)</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    args = vars(parse())
+    # print(&#34;Parsed args&#34;, args, &#34;\n-------------------------\n&#34;)
+
+    eval(args)
+
+    print(&#34;-------------------------\n\
+| Successfully executed |\n\
+-------------------------&#34;)</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>) ‑> argparse.Namespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse arguments from command line and return them as a dictionary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse() -&gt; argparse.Namespace:
+    &#34;&#34;&#34;Parse arguments from command line and return them as a dictionary.
+    &#34;&#34;&#34;
+
+    properties: dict[str, dict[str, str]] = {
+        &#34;people&#34;: dbt.PersonWorker.properties,
+        &#34;events&#34;: dbt.EventWorker.properties,
+        &#34;places&#34;: dbt.PlaceWorker.properties
+    }
+    requirements: dict[str, dict[str, list[str]]] = {
+        t: {
+            &#34;add&#34;: [p for p in properties[t] if p != &#34;id&#34;],
+            &#34;update&#34;: [&#34;id&#34;],
+            &#34;lookup&#34;: [&#34;name&#34;] if t != &#34;people&#34; else [&#34;surname&#34;],
+            &#34;info&#34;: [&#34;id&#34;],
+            &#34;info_all&#34;: [],
+            &#34;delete&#34;: [&#34;id&#34;]
+        } for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]
+    }
+    possibles: dict[str, dict[str, list[str]]] = {
+        t: {
+            a: (requirements[t][a]
+                if a != &#34;update&#34; else list(properties[t].keys()))
+            for a in requirements[t]
+        } for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]
+    }
+
+    list_parse: list[str] = [&#34;participates&#34;, &#34;invitees&#34;]
+    date_parse: list[str] = [&#34;start_date&#34;, &#34;end_date&#34;]
+    int_parse: list[str] = [&#34;street_number&#34;, &#34;place_id&#34;, &#34;id&#34;]
+
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(
+        prog=sys.argv[0],
+        description=&#34;Command-line application for managing events,\
+            participants and places of events. \
+                Directly performing actions on databases or through API.&#34;,
+        epilog=&#34;Have fun!&#34;
+    )
+
+    parser.add_argument(&#34;-a&#34;, &#34;--api&#34;, action=&#34;store_true&#34;,
+                        help=&#34;Get data using API&#34;)
+
+    subparser_action = parser.add_subparsers(
+        description=&#34;Action to be performed&#34;,
+        required=True,
+        dest=&#34;action&#34;,
+        help=&#34;add - adding new record, \
+            update - updating a record, \
+            lookup - lookup a record with given name \
+                (unavailable through API), \
+            info - get data of a record with given id, \
+            info_all - get data of all records (unavailable through API), \
+            delete - remove a record with given id&#34;)
+
+    for a in [&#34;add&#34;, &#34;update&#34;, &#34;lookup&#34;, &#34;info&#34;, &#34;info_all&#34;, &#34;delete&#34;]:
+        subparser = subparser_action.add_parser(
+            a, description=f&#34;Performing action {a}&#34;)
+        subsubp = subparser.add_subparsers(
+            description=f&#34;Table for which action {a} will be performed&#34;,
+            dest=&#34;table&#34;,
+            required=True,
+            help=&#34;people - participants data (e.g. name, surname), \
+                    events - events data (e.g. name, dates), \
+                    places - places of the events data (e.g. name, street)&#34;)
+        for t in [&#34;people&#34;, &#34;events&#34;, &#34;places&#34;]:
+            subsubsubp = subsubp.add_parser(
+                t,
+                description=f&#34;Performing action {a} on {t} table&#34;)
+            parse_option_values(
+                subsubsubp, properties[t], possibles[t][a],
+                requirements[t][a], list_parse, date_parse, int_parse)
+
+    args: argparse.Namespace = parser.parse_args()
+    return args</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.parse_option_values"><code class="name flex">
+<span>def <span class="ident">parse_option_values</span></span>(<span>parser: argparse.ArgumentParser, properties: dict[str, str], possibles: list[str], requirements: list[str], list_parse: list[str], date_parse: list[str], int_parse: list[str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create options in command-line argument parser.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>parser</code> - <code>argparse.ArgumentParser</code> object</li>
+<li><code>properties</code> - dictionary with descritpion of properties (options)
+that will be displayed (i. e. names of the options
+are the keys and the values are the descriptions)</li>
+<li><code>possibles</code> - possible options
+(all keys from the <code>properties</code> dictionary)</li>
+<li><code>requirements</code> - list of required options' names</li>
+<li><code>list_parse</code> - list of options' names that should be parsed as a list</li>
+<li><code>date_parse</code> - list of options' names that should be parsed as a date</li>
+<li><code>int_parse</code> - list of options' names that should be parsed as a date</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_option_values(
+        parser: argparse.ArgumentParser, properties: dict[str, str],
+        possibles: list[str], requirements: list[str],
+        list_parse: list[str], date_parse: list[str],
+        int_parse: list[str]) -&gt; None:
+    &#34;&#34;&#34;Create options in command-line argument parser.
+
+    Arguments:
+
+    - `parser` - `argparse.ArgumentParser` object
+    - `properties` - dictionary with descritpion of properties (options)\
+        that will be displayed (i. e. names of the options\
+             are the keys and the values are the descriptions)
+    - `possibles` - possible options \
+        (all keys from the `properties` dictionary)
+    - `requirements` - list of required options&#39; names
+    - `list_parse` - list of options&#39; names that should be parsed as a list
+    - `date_parse` - list of options&#39; names that should be parsed as a date
+    - `int_parse` - list of options&#39; names that should be parsed as a date
+    &#34;&#34;&#34;
+
+    for p in possibles:
+        if p in list_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                nargs=&#34;*&#34;)
+        elif p in int_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                type=int)
+        elif p in date_parse:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p],
+                                type=parse_time)
+        else:
+            parser.add_argument(f&#34;--{p}&#34;, required=p in requirements,
+                                help=properties[p] +
+                                &#34; (required)&#34;
+                                if p in requirements else properties[p])</code></pre>
+</details>
+</dd>
+<dt id="app.sch_client.parse_time"><code class="name flex">
+<span>def <span class="ident">parse_time</span></span>(<span>s: str) ‑> datetime.datetime</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse time and return <code>datetime.datetime</code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>s</code> &ndash; string in format <code>dd-mm-yyyy hh:mm</code></li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_time(s: str) -&gt; datetime.datetime:
+    &#34;&#34;&#34;Parse time and return `datetime.datetime` object.
+
+    Arguments:
+
+    - `s` -- string in format `dd-mm-yyyy hh:mm`&#34;&#34;&#34;
+
+    return datetime.datetime.strptime(s, &#34;%d-%m-%Y %H:%M&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app" href="index.html">app</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="app.sch_client.api_access" href="#app.sch_client.api_access">api_access</a></code></li>
+<li><code><a title="app.sch_client.direct_access" href="#app.sch_client.direct_access">direct_access</a></code></li>
+<li><code><a title="app.sch_client.eval" href="#app.sch_client.eval">eval</a></code></li>
+<li><code><a title="app.sch_client.main" href="#app.sch_client.main">main</a></code></li>
+<li><code><a title="app.sch_client.parse" href="#app.sch_client.parse">parse</a></code></li>
+<li><code><a title="app.sch_client.parse_option_values" href="#app.sch_client.parse_option_values">parse_option_values</a></code></li>
+<li><code><a title="app.sch_client.parse_time" href="#app.sch_client.parse_time">parse_time</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

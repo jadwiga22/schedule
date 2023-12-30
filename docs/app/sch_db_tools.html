@@ -1,0 +1,3636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>app.sch_db_tools API documentation</title>
+<meta name="description" content="Database tools - structure of database and workers for actions" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.sch_db_tools</code></h1>
+</header>
+<section id="section-intro">
+<p>Database tools - structure of database and workers for actions</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># --------- SCHEDULE PROJECT ---------
+# ------- Jadwiga Swierczynska -------
+# ------------ 30.12.2023 ------------
+
+&#34;&#34;&#34;Database tools - structure of database and workers for actions&#34;&#34;&#34;
+
+
+from __future__ import annotations
+from sqlalchemy.orm import DeclarativeBase, MappedColumn
+from sqlalchemy import Table, Column, Integer, ForeignKey, String, \
+    DateTime
+from sqlalchemy.orm import relationship, mapped_column, Mapped
+from typing import List
+from sqlalchemy.orm import validates
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+import datetime
+from typing import Any
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+participation = Table(
+    &#34;person_event&#34;,
+    Base.metadata,
+    Column(&#34;event_id&#34;, ForeignKey(&#34;Events.id&#34;)),
+    Column(&#34;person_id&#34;, ForeignKey(&#34;People.id&#34;)))
+
+
+class Event(Base):
+    &#34;&#34;&#34;Class of events.
+
+    Apart from properties explicitly mentioned below `Event` objects \
+        may also contain `collides` property \
+            informing about time collisions with other events.
+    &#34;&#34;&#34;
+    __tablename__ = &#34;Events&#34;
+    __allow_unmapped__ = True
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the event (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the event. Must not be empty.&#34;&#34;&#34;
+
+    start_date: MappedColumn[Any] = mapped_column(DateTime, nullable=False)
+    &#34;&#34;&#34;Start date of the event - must not be greater than `end_date`.&#34;&#34;&#34;
+
+    end_date: MappedColumn[Any] = mapped_column(DateTime, nullable=False)
+    &#34;&#34;&#34;End date of the event - must not be less than `start_date`&#34;&#34;&#34;
+
+    description: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Description of the event - must be at least 3 characters long.&#34;&#34;&#34;
+
+    invitees: Mapped[List[Person]] = relationship(
+        secondary=participation, back_populates=&#34;participates&#34;)
+    &#34;&#34;&#34;List of `Person` object - people invited to the event.&#34;&#34;&#34;
+
+    place_id: MappedColumn[Any] = mapped_column(
+        Integer, ForeignKey(&#39;Places.id&#39;))
+    &#34;&#34;&#34;Id of the place of the event.&#34;&#34;&#34;
+
+    place: Mapped[Place] = relationship(&#34;Place&#34;, back_populates=&#34;hosts_event&#34;)
+    &#34;&#34;&#34;`Place` object - place of the event&#34;&#34;&#34;
+
+    collides: list[Event]
+
+    def serialize_basic(self: Event) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Person` objects from `invitees` list  \
+                and `Place` object from `place` \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Event) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Person` objects from `invitees` list will be serialized \
+            using `serialize_basic` method from `Person` class
+        - `Place` object from `place` will be serialized \
+            using `serialize_basic` method from `Place` class
+        - `Event` objects from `collides` will be serialized \
+            using `serialize_basic` method from `Event` class
+        - other properties are serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.invitees]
+        res[&#34;invitees&#34;] = xs
+        if self.place is not None:
+            res[&#34;place&#34;] = self.place.serialize_basic()
+        if &#34;collides&#34; in vars(self) and vars(self)[&#34;collides&#34;] is not None:
+            cs = vars(self)[&#34;collides&#34;]
+            res[&#34;collides&#34;] = [c.serialize_basic() for c in cs]
+        return res
+
+    @validates(&#34;name&#34;)
+    def validate_name(self: Event, key: str, name: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `name` is not empty.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;name&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `name` property
+        &#34;&#34;&#34;
+        if len(name) == 0:
+            raise ValueError(&#34;Name cannot be empty&#34;)
+        return name
+
+    @validates(&#34;description&#34;)
+    def validate_description(self: Event, key: str, description: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `description` is at least 3 characters long.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;description&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `description` property
+        &#34;&#34;&#34;
+        if len(description) &lt; 3:
+            raise ValueError(&#34;Description must at least 3 characters long&#34;)
+        return description
+
+    @validates(&#34;start_date&#34;, &#34;end_date&#34;,)
+    def validate_dates(self: Event, key: str, field: datetime.datetime) -&gt;\
+            datetime.datetime:
+        &#34;&#34;&#34;Check if the `start_date` is not greater than `end_date`.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - during the first invocation is equal to `&#34;start_date&#34;` \
+            and during the second invocation is equal to `&#34;end_date&#34;` \
+                (as the method is automatically invoked by the database)
+        - `name` - value of the `start_date` and `end_date` property \
+            in the first and the second invocation respectively&#34;&#34;&#34;
+        if key == &#34;start_date&#34;:
+            if self.end_date is not None and self.end_date &lt; field:
+                raise ValueError(&#34;End date cannot be less then start date&#34;)
+        if key == &#34;end_date&#34;:
+            if field &lt; self.start_date:
+                raise ValueError(&#34;End date cannot be less then start date&#34;)
+
+        return field
+
+
+class Place(Base):
+    &#34;&#34;&#34;Class of places where the events are held.&#34;&#34;&#34;
+    __tablename__ = &#34;Places&#34;
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the place (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the place. Must not be empty.&#34;&#34;&#34;
+
+    street_name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Street name of the place.&#34;&#34;&#34;
+
+    street_number: MappedColumn[Any] = mapped_column(Integer)
+    &#34;&#34;&#34;Street number of the place. Must be a positive integer.&#34;&#34;&#34;
+
+    hosts_event: Mapped[List[Event]] = relationship(
+        &#34;Event&#34;, back_populates=&#34;place&#34;)
+    &#34;&#34;&#34;List of the `Event` objects - events held in this place.&#34;&#34;&#34;
+
+    def serialize_basic(self: Place) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Event` objects from `hosts_event` list \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Place) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Event` objects from `hosts_event` will be serialized \
+            using `serialize_basic` function from `Event` class
+        - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.hosts_event]
+        res[&#34;hosts_event&#34;] = xs
+        return res
+
+    @validates(&#34;name&#34;)
+    def validate_name(self: Place, key: str, name: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `name` is not empty.
+
+        Arguments:
+
+        - `self` - `Place` object
+        - `key` - always equal to `&#34;name&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `name` property
+        &#34;&#34;&#34;
+
+        if len(name) == 0:
+            raise ValueError(&#34;Name cannot be empty&#34;)
+        return name
+
+    @validates(&#34;street_number&#34;)
+    def validate_street_number(self: Place, key: str,
+                               street_number: int) -&gt; int:
+        &#34;&#34;&#34;Check if the `street_number` is a positive integer.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;street_number&#34;` \
+            (as the method is automatically invoked by the database)
+        - `street_number` - value of the `street_number` property
+        &#34;&#34;&#34;
+
+        if (not isinstance(street_number, int)) or street_number &lt;= 0:
+            raise ValueError(&#34;Street number must be positive number&#34;)
+        return street_number
+
+
+class Person(Base):
+    &#34;&#34;&#34;Class of people - events&#39; participants.&#34;&#34;&#34;
+    __tablename__ = &#39;People&#39;
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the person (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the person.&#34;&#34;&#34;
+
+    surname: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Surname of the person. Must not be empty.&#34;&#34;&#34;
+
+    email: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Email of the person. Must contain `@` character.&#34;&#34;&#34;
+
+    participates: Mapped[List[Event]] = relationship(
+        secondary=participation, back_populates=&#34;invitees&#34;)
+    &#34;&#34;&#34;List of `Event` objects - events in which this person participates. &#34;&#34;&#34;
+
+    def serialize_basic(self: Person) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Event` objects from `participates` list \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Person) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Event` objects from `participates` will be serialized \
+            using `serialize_basic` function from `Event` class
+        - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.participates]
+        res[&#34;participates&#34;] = xs
+        return res
+
+    @validates(&#34;surname&#34;)
+    def validate_surname(self: Person, key: str, surname: str) -&gt; str:
+        &#34;&#34;&#34;Check if the surname is not empty.
+
+        Arguments:
+
+        - `self` - `Person` object
+        - `key` - always equal to `&#34;surname&#34;` \
+            (as the method is automatically invoked by the database)
+        - `surname` - value of the `surname` property&#34;&#34;&#34;
+
+        if len(surname) == 0:
+            raise ValueError(&#34;Surname cannot be empty&#34;)
+        return surname
+
+    @validates(&#34;email&#34;)
+    def validate_email(self: Person, key: str, email: str) -&gt; str:
+        &#34;&#34;&#34;Check if the email contains `@` character.
+
+        Arguments:
+
+        - `self` - `Person` object
+        - `key` - always equal to `&#34;email&#34;` \
+            (as the method is automatically invoked by the database)
+        - `email` - value of the `email` property&#34;&#34;&#34;
+
+        if &#34;@&#34; not in email:
+            raise ValueError(&#34;Incorrect email address&#34;)
+        return email
+
+
+# DB workers ---------------------------
+
+class Worker():
+    &#34;&#34;&#34;Base class for database workers - performing actions on database.&#34;&#34;&#34;
+
+    def __init__(self: Worker, dict: dict[str, Any],
+                 properties: dict[str, Any]) -&gt; None:
+        &#34;&#34;&#34;Initialize a worker - set attributes listed in `properties` \
+            basing on the dictionary `dict` \
+                (`dict` *must* contain all properties from `properties`).&#34;&#34;&#34;
+
+        for prop in properties:
+            setattr(self, prop, dict[prop] if prop in dict else None)
+
+    def updateWorker(self: Worker, p: Base | None,
+                     properties: dict[str, Any]) -&gt; None:
+        &#34;&#34;&#34;Update a database object - set attributes of `p` \
+            listed in `properties` basing on the `self` properties \
+                (`self` *does not have to* contain all properties \
+                    from `properties`).
+
+        Arguments:
+
+        - `self` - `Worker` object
+        - `p` - `Base` object (`Event`, `Place` or `Person`) \
+            which will be updated
+        - `properties` - dictionary of possible properties &#34;&#34;&#34;
+
+        for prop in properties:
+            self_prop = getattr(self, prop)
+            if self_prop is not None:
+                setattr(p, prop, self_prop)
+
+
+class PersonWorker(Worker):
+    &#34;&#34;&#34;Worker for `Person` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Person` objects, \
+                looking up `Person` objects with particular surname \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Person id&#34;,
+                  &#34;name&#34;: &#34;Person name&#34;,
+                  &#34;surname&#34;: &#34;Person surname&#34;,
+                  &#34;email&#34;: &#34;Person email&#34;,
+                  &#34;participates&#34;:
+                  &#34;List of event ids in which this person participates&#34;}
+    &#34;&#34;&#34;Dictionary with description of the properties \
+        of the `Person` objects.&#34;&#34;&#34;
+
+    list_properties = [&#34;participates&#34;]
+    &#34;&#34;&#34;List of `Person` properties that are lists.&#34;&#34;&#34;
+
+    id: int | None
+    name: str | None
+    surname: str | None
+    email: str | None
+    participates: list[int] | list[Event]
+
+    def __init__(self: PersonWorker, dict: dict[str, Any]):
+        super().__init__(dict, PersonWorker.properties)
+
+    def add(self: PersonWorker, session: Session) -&gt; Person:
+        &#34;&#34;&#34;Add a `Person` object to a database \
+            basing on `self` properties. Return created `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = Person(name=self.name, surname=self.surname, email=self.email)
+        events_db = session.query(Event).filter(
+            Event.id.in_(self.participates)).all()
+        p.participates = events_db
+        session.add(p)
+        session.flush()
+        return p
+
+    def update(self: PersonWorker, session: Session) -&gt; Person | None:
+        &#34;&#34;&#34;Update a `Person` object in a database \
+            basing on `self` properties. Return updated `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        if self.participates is not None:
+            self.participates = session.query(Event).filter(
+                Event.id.in_(self.participates)).all()
+        p = session.query(Person).filter(Person.id == self.id).first()
+        super().updateWorker(p, PersonWorker.properties)
+        session.flush()
+        return p
+
+    def info(self: PersonWorker, session: Session) -&gt; Person | None:
+        &#34;&#34;&#34;Get info about a `Person` object from a database \
+            with `id` equal to `self.id`. Return `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Person).filter(Person.id == self.id).first()
+        return p
+
+    def info_all(self: PersonWorker, session: Session) -&gt; list[Person]:
+        &#34;&#34;&#34;Get info about all `Person` objects from a database. \
+            Return list of `Person` objects.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        people = session.query(Person).all()
+        return people
+
+    def lookup(self: PersonWorker, session: Session) -&gt; list[Person]:
+        &#34;&#34;&#34;Get info about all `Person` objects \
+            with `surname` equal to `self.surname`. \
+                Return list of `Person` objects.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        people = session.query(Person).filter(
+            Person.surname == self.surname).all()
+        return people
+
+    def delete(self: PersonWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete a `Person` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information about `id` \
+                    of the deleted person.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Person).filter(Person.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted person {self.id}&#34;}
+
+
+class PlaceWorker(Worker):
+    &#34;&#34;&#34;Worker for `Place` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Place` objects, \
+                looking up `Place` objects with particular name \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Place id&#34;,
+                  &#34;name&#34;: &#34;Place name&#34;,
+                        &#34;street_name&#34;: &#34;Street name&#34;,
+                        &#34;street_number&#34;: &#34;Street number&#34;}
+    &#34;&#34;&#34;Dictionary with description of the properties of the `Place` objects.&#34;&#34;&#34;
+
+    id: int
+    name: str | None
+    street_name: str | None
+    street_number: int | None
+
+    list_properties: list[str] = []
+    &#34;&#34;&#34;List of `Place` properties that are lists.&#34;&#34;&#34;
+
+    def __init__(self: PlaceWorker, dict: dict[str, Any]) -&gt; None:
+        super().__init__(dict, PlaceWorker.properties)
+
+    def add(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Add a `Place` object to a database \
+            basing on `self` properties. Return created `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = Place(name=self.name, street_name=self.street_name,
+                  street_number=self.street_number)
+        session.add(p)
+        session.flush()
+        return p
+
+    def update(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Update a `Place` object in a \
+            database basing on `self` properties. \
+                Return updated `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        super().updateWorker(p, PlaceWorker.properties)
+        session.flush()
+        return p
+
+    def info(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Get info about a `Place` object from a database \
+            with `id` equal to `self.id`. Return `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        return p
+
+    def info_all(self: PlaceWorker, session: Session) -&gt; list[Place]:
+        &#34;&#34;&#34;Get info about all `Place` objects from a database. \
+            Return list of `Place` objects.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        places = session.query(Place).all()
+        return places
+
+    def lookup(self: PlaceWorker, session: Session) -&gt; list[Place]:
+        &#34;&#34;&#34;Get info about all `Place` objects \
+            with `name` equal to `self.name`. \
+                Return list of `Place` objects.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        places = session.query(Place).filter(Place.name == self.name).all()
+        return places
+
+    def delete(self: PlaceWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete a `Place` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information about `id` \
+                    of the deleted place.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted place {self.id}&#34;}
+
+
+class EventWorker(Worker):
+    &#34;&#34;&#34;Worker for `Event` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Event` objects, \
+                looking up `Event` objects with particular name \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Event id&#34;,
+                  &#34;name&#34;: &#34;Event name&#34;,
+                        &#34;start_date&#34;:
+                          &#34;Start date of the event (&#39;dd-mm-yyyy hh:mm&#39;)&#34;,
+                        &#34;end_date&#34;:
+                          &#34;End date of the event (&#39;dd-mm-yyyy hh:mm&#39;)&#34;,
+                        &#34;description&#34;: &#34;Description (at least 3 characters)&#34;,
+                        &#34;invitees&#34;: &#34;List of invited people ids&#34;,
+                        &#34;place_id&#34;: &#34;Id of the event place&#34;}
+
+    &#34;&#34;&#34;Dictionary with description of the properties of the `Event` objects.&#34;&#34;&#34;
+
+    id: int
+    name: str | None
+    start_date: str | None
+    end_date: str | None
+    description: str | None
+    invitees: list[Person] | list[int] | None
+    place_id: int | None
+    collides: list[Event] | list[int] | None
+
+    list_properties: list[str] = [&#34;invitees&#34;]
+    &#34;&#34;&#34;List of `Event` properties that are lists.&#34;&#34;&#34;
+
+    def __init__(self: EventWorker, dict: dict[str, Any]) -&gt; None:
+        super().__init__(dict, EventWorker.properties)
+
+    @staticmethod
+    def time_collision(event: Event, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Return list of `Event` objects with which `event` collides.
+
+        Arguments:
+
+        - `event` - `Event` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        return session.query(Event).filter(
+            ((event.start_date &lt;= Event.start_date)
+             &amp; (Event.start_date &lt;= event.end_date))
+            | ((Event.start_date &lt;= event.start_date)
+               &amp; (event.start_date &lt;= Event.end_date)))\
+            .filter(Event.id != event.id).all()
+
+    def add(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Add an `Event` object to a database \
+            basing on `self` properties. \
+                Return created `Event` object with `collisions` property \
+                    - list of `Event` objects with which this event collides.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        if self.invitees is not None:
+            self.invitees = session.query(Person).filter(
+                Person.id.in_(self.invitees)).all()
+        p = Event(name=self.name, start_date=self.start_date,
+                  end_date=self.end_date, description=self.description,
+                  invitees=self.invitees, place_id=self.place_id)
+        session.add(p)
+        session.flush()
+
+        res = p
+        collisions = EventWorker.time_collision(p, session)
+        res.collides = collisions
+        return res
+
+    def update(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Update an `Event` object in a database \
+            basing on `self` properties. \
+                Return updated `Event` object with `collisions` property \
+                    - list of `Event` objects with which this event collides.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+
+        if p is None:
+            return None
+
+        if self.invitees is not None:
+            self.invitees = session.query(Person).filter(
+                Person.id.in_(self.invitees)).all()
+
+        if getattr(self, &#34;start_date&#34;) is not None:
+            p.start_date = datetime.datetime(1, 1, 1, 0, 1)
+        if getattr(self, &#34;end_date&#34;) is not None:
+            p.end_date = datetime.datetime(9999, 12, 31, 23, 59)
+
+        super().updateWorker(p, EventWorker.properties)
+        session.flush()
+
+        res = p
+        collisions = EventWorker.time_collision(p, session)
+        res.collides = collisions
+        return res
+
+    def info(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Get info about an `Event` object from a database \
+            with `id` equal to `self.id`. Return `Event` object.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+        return p
+
+    def info_all(self: EventWorker, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Get info about all `Event` objects from a database. \
+            Return list of `Event` objects.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        events = session.query(Event).all()
+        return events
+
+    def lookup(self: EventWorker, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Get info about all `Event` objects \
+            with `name` equal to `self.name`. Return list of `Event` objects.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        events = session.query(Event).filter(Event.name == self.name).all()
+        return events
+
+    def delete(self: EventWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete an `Event` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information \
+                    about `id` of the deleted event.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted event {self.id}&#34;}
+
+
+def init() -&gt; Session:
+    &#34;&#34;&#34;Initialize a session (`sqlalchemy.orm.Session` object) and return it.&#34;&#34;&#34;
+
+    engine = create_engine(&#34;sqlite:///schedule.db&#34;, echo=False)
+    Base.metadata.create_all(engine)
+    return Session(engine)
+
+
+def act(instr: dict[str, Any]) -&gt; dict[str, Any] | list[dict[str, Any]]:
+    &#34;&#34;&#34;Perform an action on a database according to `dict`.
+
+    Arguments:
+
+    - `dict` - dictionary with info about action \
+        that we want to perform (name of that action, table, \
+            parameters of the query)&#34;&#34;&#34;
+
+    engine = create_engine(&#34;sqlite:///schedule.db&#34;, echo=False)
+    Base.metadata.create_all(engine)
+
+    action = instr[&#34;action&#34;]
+    table = instr[&#34;table&#34;]
+
+    workers = {
+        &#34;people&#34;: PersonWorker,
+        &#34;events&#34;: EventWorker,
+        &#34;places&#34;: PlaceWorker
+    }
+
+    s: Worker = workers[table](instr)
+
+    with init() as session:
+        DBItem = Person | Event | Place
+        s2: DBItem | list[DBItem] | dict[str,
+                                         str] = getattr(s, action)(session)
+        if s2 is None:
+            res: dict[str, Any] | list[dict[str, Any]] = {&#34;msg&#34;: &#34;Not found&#34;}
+        else:
+            if not isinstance(s2, dict):
+                if isinstance(s2, list):
+                    res = [r.serialize() for r in s2]
+                else:
+                    res = s2.serialize()
+            else:
+                res = s2
+        session.commit()
+
+    return res</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="app.sch_db_tools.act"><code class="name flex">
+<span>def <span class="ident">act</span></span>(<span>instr: dict[str, Any]) ‑> dict[str, typing.Any] | list[dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Perform an action on a database according to <code>dict</code>.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>dict</code> - dictionary with info about action
+that we want to perform (name of that action, table,
+parameters of the query)</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def act(instr: dict[str, Any]) -&gt; dict[str, Any] | list[dict[str, Any]]:
+    &#34;&#34;&#34;Perform an action on a database according to `dict`.
+
+    Arguments:
+
+    - `dict` - dictionary with info about action \
+        that we want to perform (name of that action, table, \
+            parameters of the query)&#34;&#34;&#34;
+
+    engine = create_engine(&#34;sqlite:///schedule.db&#34;, echo=False)
+    Base.metadata.create_all(engine)
+
+    action = instr[&#34;action&#34;]
+    table = instr[&#34;table&#34;]
+
+    workers = {
+        &#34;people&#34;: PersonWorker,
+        &#34;events&#34;: EventWorker,
+        &#34;places&#34;: PlaceWorker
+    }
+
+    s: Worker = workers[table](instr)
+
+    with init() as session:
+        DBItem = Person | Event | Place
+        s2: DBItem | list[DBItem] | dict[str,
+                                         str] = getattr(s, action)(session)
+        if s2 is None:
+            res: dict[str, Any] | list[dict[str, Any]] = {&#34;msg&#34;: &#34;Not found&#34;}
+        else:
+            if not isinstance(s2, dict):
+                if isinstance(s2, list):
+                    res = [r.serialize() for r in s2]
+                else:
+                    res = s2.serialize()
+            else:
+                res = s2
+        session.commit()
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.init"><code class="name flex">
+<span>def <span class="ident">init</span></span>(<span>) ‑> sqlalchemy.orm.session.Session</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize a session (<code>sqlalchemy.orm.Session</code> object) and return it.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init() -&gt; Session:
+    &#34;&#34;&#34;Initialize a session (`sqlalchemy.orm.Session` object) and return it.&#34;&#34;&#34;
+
+    engine = create_engine(&#34;sqlite:///schedule.db&#34;, echo=False)
+    Base.metadata.create_all(engine)
+    return Session(engine)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.sch_db_tools.Base"><code class="flex name class">
+<span>class <span class="ident">Base</span></span>
+<span>(</span><span>**kwargs: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class used for declarative class definitions.</p>
+<p>The :class:<code>_orm.DeclarativeBase</code> allows for the creation of new
+declarative bases in such a way that is compatible with type checkers::</p>
+<pre><code>from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+    pass
+</code></pre>
+<p>The above <code><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></code> class is now usable as the base for new declarative
+mappings.
+The superclass makes use of the <code>__init_subclass__()</code>
+method to set up new classes and metaclasses aren't used.</p>
+<p>When first used, the :class:<code>_orm.DeclarativeBase</code> class instantiates a new
+:class:<code>_orm.registry</code> to be used with the base, assuming one was not
+provided explicitly. The :class:<code>_orm.DeclarativeBase</code> class supports
+class-level attributes which act as parameters for the construction of this
+registry; such as to indicate a specific :class:<code>_schema.MetaData</code>
+collection as well as a specific value for
+:paramref:<code>_orm.registry.type_annotation_map</code>::</p>
+<pre><code>from typing_extensions import Annotated
+
+from sqlalchemy import BigInteger
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy.orm import DeclarativeBase
+
+bigint = Annotated[int, "bigint"]
+my_metadata = MetaData()
+
+class Base(DeclarativeBase):
+    metadata = my_metadata
+    type_annotation_map = {
+        str: String().with_variant(String(255), "mysql", "mariadb"),
+        bigint: BigInteger()
+    }
+</code></pre>
+<p>Class-level attributes which may be specified include:</p>
+<p>:param metadata: optional :class:<code>_schema.MetaData</code> collection.
+If a :class:<code>_orm.registry</code> is constructed automatically, this
+:class:<code>_schema.MetaData</code> collection will be used to construct it.
+Otherwise, the local :class:<code>_schema.MetaData</code> collection will supercede
+that used by an existing :class:<code>_orm.registry</code> passed using the
+:paramref:<code>_orm.DeclarativeBase.registry</code> parameter.
+:param type_annotation_map: optional type annotation map that will be
+passed to the :class:<code>_orm.registry</code> as
+:paramref:<code>_orm.registry.type_annotation_map</code>.
+:param registry: supply a pre-existing :class:<code>_orm.registry</code> directly.</p>
+<div class="admonition versionadded">
+<p class="admonition-title">Added in version:&ensp;2.0
+Added :class:<code>.DeclarativeBase</code>, so that declarative</p>
+<p>base classes may be constructed in such a way that is also recognized
+by :pep:<code>484</code> type checkers.
+As a result, :class:<code>.DeclarativeBase</code>
+and other subclassing-oriented APIs should be seen as
+superseding previous "class returned by a function" APIs, namely
+:func:<code>_orm.declarative_base</code> and :meth:<code>_orm.registry.generate_base</code>,
+where the base class returned cannot be recognized by type checkers
+without using plugins.</p>
+</div>
+<p><strong><strong>init</strong> behavior</strong></p>
+<p>In a plain Python class, the base-most <code>__init__()</code> method in the class
+hierarchy is <code>object.__init__()</code>, which accepts no arguments. However,
+when the :class:<code>_orm.DeclarativeBase</code> subclass is first declared, the
+class is given an <code>__init__()</code> method that links to the
+:paramref:<code>_orm.registry.constructor</code> constructor function, if no
+<code>__init__()</code> method is already present; this is the usual declarative
+constructor that will assign keyword arguments as attributes on the
+instance, assuming those attributes are established at the class level
+(i.e. are mapped, or are linked to a descriptor). This constructor is
+<strong>never accessed by a mapped class without being called explicitly via
+super()</strong>, as mapped classes are themselves given an <code>__init__()</code> method
+directly which calls :paramref:<code>_orm.registry.constructor</code>, so in the
+default case works independently of what the base-most <code>__init__()</code>
+method does.</p>
+<div class="admonition versionchanged">
+<p class="admonition-title">Changed in version:&ensp;2.0.1
+:class:<code>_orm.DeclarativeBase</code> has a default</p>
+<p>constructor that links to :paramref:<code>_orm.registry.constructor</code> by
+default, so that calls to <code>super().__init__()</code> can access this
+constructor. Previously, due to an implementation mistake, this default
+constructor was missing, and calling <code>super().__init__()</code> would invoke
+<code>object.__init__()</code>.</p>
+</div>
+<p>The :class:<code>_orm.DeclarativeBase</code> subclass may also declare an explicit
+<code>__init__()</code> method which will replace the use of the
+:paramref:<code>_orm.registry.constructor</code> function at this level::</p>
+<pre><code>class Base(DeclarativeBase):
+    def __init__(self, id=None):
+        self.id = id
+</code></pre>
+<p>Mapped classes still will not invoke this constructor implicitly; it
+remains only accessible by calling <code>super().__init__()</code>::</p>
+<pre><code>class MyClass(Base):
+    def __init__(self, id=None, name=None):
+        self.name = name
+        super().__init__(id=id)
+</code></pre>
+<p>Note that this is a different behavior from what functions like the legacy
+:func:<code>_orm.declarative_base</code> would do; the base created by those functions
+would always install :paramref:<code>_orm.registry.constructor</code> for
+<code>__init__()</code>.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code>kwargs</code>.</p>
+<p>Only keys that are present as
+attributes of the instance's class are allowed. These could be,
+for example, any mapped columns or relationships.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Base(DeclarativeBase):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>sqlalchemy.orm.decl_api.DeclarativeBase</li>
+<li>sqlalchemy.inspection.Inspectable</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></li>
+<li><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></li>
+<li><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.sch_db_tools.Base.metadata"><code class="name">var <span class="ident">metadata</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.Base.registry"><code class="name">var <span class="ident">registry</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="app.sch_db_tools.Event"><code class="flex name class">
+<span>class <span class="ident">Event</span></span>
+<span>(</span><span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class of events.</p>
+<p>Apart from properties explicitly mentioned below <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects
+may also contain <code>collides</code> property
+informing about time collisions with other events.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code>kwargs</code>.</p>
+<p>Only keys that are present as
+attributes of the instance's class are allowed. These could be,
+for example, any mapped columns or relationships.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Event(Base):
+    &#34;&#34;&#34;Class of events.
+
+    Apart from properties explicitly mentioned below `Event` objects \
+        may also contain `collides` property \
+            informing about time collisions with other events.
+    &#34;&#34;&#34;
+    __tablename__ = &#34;Events&#34;
+    __allow_unmapped__ = True
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the event (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the event. Must not be empty.&#34;&#34;&#34;
+
+    start_date: MappedColumn[Any] = mapped_column(DateTime, nullable=False)
+    &#34;&#34;&#34;Start date of the event - must not be greater than `end_date`.&#34;&#34;&#34;
+
+    end_date: MappedColumn[Any] = mapped_column(DateTime, nullable=False)
+    &#34;&#34;&#34;End date of the event - must not be less than `start_date`&#34;&#34;&#34;
+
+    description: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Description of the event - must be at least 3 characters long.&#34;&#34;&#34;
+
+    invitees: Mapped[List[Person]] = relationship(
+        secondary=participation, back_populates=&#34;participates&#34;)
+    &#34;&#34;&#34;List of `Person` object - people invited to the event.&#34;&#34;&#34;
+
+    place_id: MappedColumn[Any] = mapped_column(
+        Integer, ForeignKey(&#39;Places.id&#39;))
+    &#34;&#34;&#34;Id of the place of the event.&#34;&#34;&#34;
+
+    place: Mapped[Place] = relationship(&#34;Place&#34;, back_populates=&#34;hosts_event&#34;)
+    &#34;&#34;&#34;`Place` object - place of the event&#34;&#34;&#34;
+
+    collides: list[Event]
+
+    def serialize_basic(self: Event) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Person` objects from `invitees` list  \
+                and `Place` object from `place` \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Event) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Person` objects from `invitees` list will be serialized \
+            using `serialize_basic` method from `Person` class
+        - `Place` object from `place` will be serialized \
+            using `serialize_basic` method from `Place` class
+        - `Event` objects from `collides` will be serialized \
+            using `serialize_basic` method from `Event` class
+        - other properties are serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.invitees]
+        res[&#34;invitees&#34;] = xs
+        if self.place is not None:
+            res[&#34;place&#34;] = self.place.serialize_basic()
+        if &#34;collides&#34; in vars(self) and vars(self)[&#34;collides&#34;] is not None:
+            cs = vars(self)[&#34;collides&#34;]
+            res[&#34;collides&#34;] = [c.serialize_basic() for c in cs]
+        return res
+
+    @validates(&#34;name&#34;)
+    def validate_name(self: Event, key: str, name: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `name` is not empty.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;name&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `name` property
+        &#34;&#34;&#34;
+        if len(name) == 0:
+            raise ValueError(&#34;Name cannot be empty&#34;)
+        return name
+
+    @validates(&#34;description&#34;)
+    def validate_description(self: Event, key: str, description: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `description` is at least 3 characters long.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;description&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `description` property
+        &#34;&#34;&#34;
+        if len(description) &lt; 3:
+            raise ValueError(&#34;Description must at least 3 characters long&#34;)
+        return description
+
+    @validates(&#34;start_date&#34;, &#34;end_date&#34;,)
+    def validate_dates(self: Event, key: str, field: datetime.datetime) -&gt;\
+            datetime.datetime:
+        &#34;&#34;&#34;Check if the `start_date` is not greater than `end_date`.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - during the first invocation is equal to `&#34;start_date&#34;` \
+            and during the second invocation is equal to `&#34;end_date&#34;` \
+                (as the method is automatically invoked by the database)
+        - `name` - value of the `start_date` and `end_date` property \
+            in the first and the second invocation respectively&#34;&#34;&#34;
+        if key == &#34;start_date&#34;:
+            if self.end_date is not None and self.end_date &lt; field:
+                raise ValueError(&#34;End date cannot be less then start date&#34;)
+        if key == &#34;end_date&#34;:
+            if field &lt; self.start_date:
+                raise ValueError(&#34;End date cannot be less then start date&#34;)
+
+        return field</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></li>
+<li>sqlalchemy.orm.decl_api.DeclarativeBase</li>
+<li>sqlalchemy.inspection.Inspectable</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.sch_db_tools.Event.collides"><code class="name">var <span class="ident">collides</span> : list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="app.sch_db_tools.Event.description"><code class="name">var <span class="ident">description</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Description of the event - must be at least 3 characters long.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.end_date"><code class="name">var <span class="ident">end_date</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>End date of the event - must not be less than <code>start_date</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.id"><code class="name">var <span class="ident">id</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Id of the event (integer), primary key. Automatically generated.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.invitees"><code class="name">var <span class="ident">invitees</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>List of <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object - people invited to the event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.name"><code class="name">var <span class="ident">name</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Name of the event. Must not be empty.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.place"><code class="name">var <span class="ident">place</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p><code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object - place of the event</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.place_id"><code class="name">var <span class="ident">place_id</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Id of the place of the event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.start_date"><code class="name">var <span class="ident">start_date</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Start date of the event - must not be greater than <code>end_date</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.Event.serialize"><code class="name flex">
+<span>def <span class="ident">serialize</span></span>(<span>self: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Recursively serialize:</p>
+<ul>
+<li><code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects from <code>invitees</code> list will be serialized
+using <code>serialize_basic</code> method from <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> class</li>
+<li><code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object from <code>place</code> will be serialized
+using <code>serialize_basic</code> method from <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> class</li>
+<li><code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from <code>collides</code> will be serialized
+using <code>serialize_basic</code> method from <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> class</li>
+<li>other properties are serialized as in <code>serialize_basic</code></li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize(self: Event) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Recursively serialize:
+
+    - `Person` objects from `invitees` list will be serialized \
+        using `serialize_basic` method from `Person` class
+    - `Place` object from `place` will be serialized \
+        using `serialize_basic` method from `Place` class
+    - `Event` objects from `collides` will be serialized \
+        using `serialize_basic` method from `Event` class
+    - other properties are serialized as in `serialize_basic`&#34;&#34;&#34;
+
+    res = self.serialize_basic()
+    xs = [p.serialize_basic() for p in self.invitees]
+    res[&#34;invitees&#34;] = xs
+    if self.place is not None:
+        res[&#34;place&#34;] = self.place.serialize_basic()
+    if &#34;collides&#34; in vars(self) and vars(self)[&#34;collides&#34;] is not None:
+        cs = vars(self)[&#34;collides&#34;]
+        res[&#34;collides&#34;] = [c.serialize_basic() for c in cs]
+    return res</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.serialize_basic"><code class="name flex">
+<span>def <span class="ident">serialize_basic</span></span>(<span>self: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Non-recursively serialize
+(<code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects from <code>invitees</code> list
+and <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object from <code>place</code>
+will <em>not</em> be serialized).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize_basic(self: Event) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Non-recursively serialize \
+        (`Person` objects from `invitees` list  \
+            and `Place` object from `place` \
+            will *not* be serialized).&#34;&#34;&#34;
+
+    return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.validate_dates"><code class="name flex">
+<span>def <span class="ident">validate_dates</span></span>(<span>self: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>, key: str, field: datetime.datetime) ‑> datetime.datetime</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the <code>start_date</code> is not greater than <code>end_date</code>.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object</li>
+<li><code>key</code> - during the first invocation is equal to <code>"start_date"</code>
+and during the second invocation is equal to <code>"end_date"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>name</code> - value of the <code>start_date</code> and <code>end_date</code> property
+in the first and the second invocation respectively</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;start_date&#34;, &#34;end_date&#34;,)
+def validate_dates(self: Event, key: str, field: datetime.datetime) -&gt;\
+        datetime.datetime:
+    &#34;&#34;&#34;Check if the `start_date` is not greater than `end_date`.
+
+    Arguments:
+
+    - `self` - `Event` object
+    - `key` - during the first invocation is equal to `&#34;start_date&#34;` \
+        and during the second invocation is equal to `&#34;end_date&#34;` \
+            (as the method is automatically invoked by the database)
+    - `name` - value of the `start_date` and `end_date` property \
+        in the first and the second invocation respectively&#34;&#34;&#34;
+    if key == &#34;start_date&#34;:
+        if self.end_date is not None and self.end_date &lt; field:
+            raise ValueError(&#34;End date cannot be less then start date&#34;)
+    if key == &#34;end_date&#34;:
+        if field &lt; self.start_date:
+            raise ValueError(&#34;End date cannot be less then start date&#34;)
+
+    return field</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.validate_description"><code class="name flex">
+<span>def <span class="ident">validate_description</span></span>(<span>self: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>, key: str, description: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the <code>description</code> is at least 3 characters long.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object</li>
+<li><code>key</code> - always equal to <code>"description"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>name</code> - value of the <code>description</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;description&#34;)
+def validate_description(self: Event, key: str, description: str) -&gt; str:
+    &#34;&#34;&#34;Check if the `description` is at least 3 characters long.
+
+    Arguments:
+
+    - `self` - `Event` object
+    - `key` - always equal to `&#34;description&#34;` \
+        (as the method is automatically invoked by the database)
+    - `name` - value of the `description` property
+    &#34;&#34;&#34;
+    if len(description) &lt; 3:
+        raise ValueError(&#34;Description must at least 3 characters long&#34;)
+    return description</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Event.validate_name"><code class="name flex">
+<span>def <span class="ident">validate_name</span></span>(<span>self: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>, key: str, name: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the <code>name</code> is not empty.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object</li>
+<li><code>key</code> - always equal to <code>"name"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>name</code> - value of the <code>name</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;name&#34;)
+def validate_name(self: Event, key: str, name: str) -&gt; str:
+    &#34;&#34;&#34;Check if the `name` is not empty.
+
+    Arguments:
+
+    - `self` - `Event` object
+    - `key` - always equal to `&#34;name&#34;` \
+        (as the method is automatically invoked by the database)
+    - `name` - value of the `name` property
+    &#34;&#34;&#34;
+    if len(name) == 0:
+        raise ValueError(&#34;Name cannot be empty&#34;)
+    return name</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.sch_db_tools.EventWorker"><code class="flex name class">
+<span>class <span class="ident">EventWorker</span></span>
+<span>(</span><span>dict: dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Worker for <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> class.
+Performs adding, updating,
+fetching info about one or all <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects,
+looking up <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects with particular name
+and deleting.</p>
+<p>Initialize a worker - set attributes listed in <code>properties</code>
+basing on the dictionary <code>dict</code>
+(<code>dict</code> <em>must</em> contain all properties from <code>properties</code>).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EventWorker(Worker):
+    &#34;&#34;&#34;Worker for `Event` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Event` objects, \
+                looking up `Event` objects with particular name \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Event id&#34;,
+                  &#34;name&#34;: &#34;Event name&#34;,
+                        &#34;start_date&#34;:
+                          &#34;Start date of the event (&#39;dd-mm-yyyy hh:mm&#39;)&#34;,
+                        &#34;end_date&#34;:
+                          &#34;End date of the event (&#39;dd-mm-yyyy hh:mm&#39;)&#34;,
+                        &#34;description&#34;: &#34;Description (at least 3 characters)&#34;,
+                        &#34;invitees&#34;: &#34;List of invited people ids&#34;,
+                        &#34;place_id&#34;: &#34;Id of the event place&#34;}
+
+    &#34;&#34;&#34;Dictionary with description of the properties of the `Event` objects.&#34;&#34;&#34;
+
+    id: int
+    name: str | None
+    start_date: str | None
+    end_date: str | None
+    description: str | None
+    invitees: list[Person] | list[int] | None
+    place_id: int | None
+    collides: list[Event] | list[int] | None
+
+    list_properties: list[str] = [&#34;invitees&#34;]
+    &#34;&#34;&#34;List of `Event` properties that are lists.&#34;&#34;&#34;
+
+    def __init__(self: EventWorker, dict: dict[str, Any]) -&gt; None:
+        super().__init__(dict, EventWorker.properties)
+
+    @staticmethod
+    def time_collision(event: Event, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Return list of `Event` objects with which `event` collides.
+
+        Arguments:
+
+        - `event` - `Event` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        return session.query(Event).filter(
+            ((event.start_date &lt;= Event.start_date)
+             &amp; (Event.start_date &lt;= event.end_date))
+            | ((Event.start_date &lt;= event.start_date)
+               &amp; (event.start_date &lt;= Event.end_date)))\
+            .filter(Event.id != event.id).all()
+
+    def add(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Add an `Event` object to a database \
+            basing on `self` properties. \
+                Return created `Event` object with `collisions` property \
+                    - list of `Event` objects with which this event collides.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        if self.invitees is not None:
+            self.invitees = session.query(Person).filter(
+                Person.id.in_(self.invitees)).all()
+        p = Event(name=self.name, start_date=self.start_date,
+                  end_date=self.end_date, description=self.description,
+                  invitees=self.invitees, place_id=self.place_id)
+        session.add(p)
+        session.flush()
+
+        res = p
+        collisions = EventWorker.time_collision(p, session)
+        res.collides = collisions
+        return res
+
+    def update(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Update an `Event` object in a database \
+            basing on `self` properties. \
+                Return updated `Event` object with `collisions` property \
+                    - list of `Event` objects with which this event collides.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+
+        if p is None:
+            return None
+
+        if self.invitees is not None:
+            self.invitees = session.query(Person).filter(
+                Person.id.in_(self.invitees)).all()
+
+        if getattr(self, &#34;start_date&#34;) is not None:
+            p.start_date = datetime.datetime(1, 1, 1, 0, 1)
+        if getattr(self, &#34;end_date&#34;) is not None:
+            p.end_date = datetime.datetime(9999, 12, 31, 23, 59)
+
+        super().updateWorker(p, EventWorker.properties)
+        session.flush()
+
+        res = p
+        collisions = EventWorker.time_collision(p, session)
+        res.collides = collisions
+        return res
+
+    def info(self: EventWorker, session: Session) -&gt; Event | None:
+        &#34;&#34;&#34;Get info about an `Event` object from a database \
+            with `id` equal to `self.id`. Return `Event` object.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+        return p
+
+    def info_all(self: EventWorker, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Get info about all `Event` objects from a database. \
+            Return list of `Event` objects.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        events = session.query(Event).all()
+        return events
+
+    def lookup(self: EventWorker, session: Session) -&gt; list[Event]:
+        &#34;&#34;&#34;Get info about all `Event` objects \
+            with `name` equal to `self.name`. Return list of `Event` objects.
+
+        Arguments:
+
+        - `self` - `EventWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        events = session.query(Event).filter(Event.name == self.name).all()
+        return events
+
+    def delete(self: EventWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete an `Event` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information \
+                    about `id` of the deleted event.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Event).filter(Event.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted event {self.id}&#34;}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.sch_db_tools.EventWorker.collides"><code class="name">var <span class="ident">collides</span> : list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>] | list[int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.description"><code class="name">var <span class="ident">description</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.end_date"><code class="name">var <span class="ident">end_date</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.id"><code class="name">var <span class="ident">id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.invitees"><code class="name">var <span class="ident">invitees</span> : list[<a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>] | list[int] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.list_properties"><code class="name">var <span class="ident">list_properties</span> : list[str]</code></dt>
+<dd>
+<div class="desc"><p>List of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> properties that are lists.</p></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.name"><code class="name">var <span class="ident">name</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.place_id"><code class="name">var <span class="ident">place_id</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.properties"><code class="name">var <span class="ident">properties</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary with description of the properties of the <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects.</p></div>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.start_date"><code class="name">var <span class="ident">start_date</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="app.sch_db_tools.EventWorker.time_collision"><code class="name flex">
+<span>def <span class="ident">time_collision</span></span>(<span>event: <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return list of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects with which <code>event</code> collides.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>event</code> - <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def time_collision(event: Event, session: Session) -&gt; list[Event]:
+    &#34;&#34;&#34;Return list of `Event` objects with which `event` collides.
+
+    Arguments:
+
+    - `event` - `Event` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    return session.query(Event).filter(
+        ((event.start_date &lt;= Event.start_date)
+         &amp; (Event.start_date &lt;= event.end_date))
+        | ((Event.start_date &lt;= event.start_date)
+           &amp; (event.start_date &lt;= Event.end_date)))\
+        .filter(Event.id != event.id).all()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.EventWorker.add"><code class="name flex">
+<span>def <span class="ident">add</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add an <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object to a database
+basing on <code>self</code> properties.
+Return created <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object with <code>collisions</code> property
+- list of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects with which this event collides.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add(self: EventWorker, session: Session) -&gt; Event | None:
+    &#34;&#34;&#34;Add an `Event` object to a database \
+        basing on `self` properties. \
+            Return created `Event` object with `collisions` property \
+                - list of `Event` objects with which this event collides.
+
+    Arguments:
+
+    - `self` - `EventWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    if self.invitees is not None:
+        self.invitees = session.query(Person).filter(
+            Person.id.in_(self.invitees)).all()
+    p = Event(name=self.name, start_date=self.start_date,
+              end_date=self.end_date, description=self.description,
+              invitees=self.invitees, place_id=self.place_id)
+    session.add(p)
+    session.flush()
+
+    res = p
+    collisions = EventWorker.time_collision(p, session)
+    res.collides = collisions
+    return res</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete an <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>.
+Return dictionary with information
+about <code>id</code> of the deleted event.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self: EventWorker, session: Session) -&gt; dict[str, str]:
+    &#34;&#34;&#34;Delete an `Event` object from a database \
+        with `id` equal to `self.id`. \
+            Return dictionary with information \
+                about `id` of the deleted event.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Event).filter(Event.id == self.id).first()
+    session.delete(p)
+    return {&#34;msg&#34;: f&#34;Deleted event {self.id}&#34;}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about an <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>. Return <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self: EventWorker, session: Session) -&gt; Event | None:
+    &#34;&#34;&#34;Get info about an `Event` object from a database \
+        with `id` equal to `self.id`. Return `Event` object.
+
+    Arguments:
+
+    - `self` - `EventWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Event).filter(Event.id == self.id).first()
+    return p</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.info_all"><code class="name flex">
+<span>def <span class="ident">info_all</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from a database.
+Return list of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info_all(self: EventWorker, session: Session) -&gt; list[Event]:
+    &#34;&#34;&#34;Get info about all `Event` objects from a database. \
+        Return list of `Event` objects.
+
+    Arguments:
+
+    - `self` - `EventWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    events = session.query(Event).all()
+    return events</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.lookup"><code class="name flex">
+<span>def <span class="ident">lookup</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects
+with <code>name</code> equal to <code>self.name</code>. Return list of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lookup(self: EventWorker, session: Session) -&gt; list[Event]:
+    &#34;&#34;&#34;Get info about all `Event` objects \
+        with `name` equal to `self.name`. Return list of `Event` objects.
+
+    Arguments:
+
+    - `self` - `EventWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    events = session.query(Event).filter(Event.name == self.name).all()
+    return events</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.EventWorker.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self: <a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update an <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object in a database
+basing on <code>self</code> properties.
+Return updated <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object with <code>collisions</code> property
+- list of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects with which this event collides.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self: EventWorker, session: Session) -&gt; Event | None:
+    &#34;&#34;&#34;Update an `Event` object in a database \
+        basing on `self` properties. \
+            Return updated `Event` object with `collisions` property \
+                - list of `Event` objects with which this event collides.
+
+    Arguments:
+
+    - `self` - `EventWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Event).filter(Event.id == self.id).first()
+
+    if p is None:
+        return None
+
+    if self.invitees is not None:
+        self.invitees = session.query(Person).filter(
+            Person.id.in_(self.invitees)).all()
+
+    if getattr(self, &#34;start_date&#34;) is not None:
+        p.start_date = datetime.datetime(1, 1, 1, 0, 1)
+    if getattr(self, &#34;end_date&#34;) is not None:
+        p.end_date = datetime.datetime(9999, 12, 31, 23, 59)
+
+    super().updateWorker(p, EventWorker.properties)
+    session.flush()
+
+    res = p
+    collisions = EventWorker.time_collision(p, session)
+    res.collides = collisions
+    return res</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></b></code>:
+<ul class="hlist">
+<li><code><a title="app.sch_db_tools.Worker.updateWorker" href="#app.sch_db_tools.Worker.updateWorker">updateWorker</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="app.sch_db_tools.Person"><code class="flex name class">
+<span>class <span class="ident">Person</span></span>
+<span>(</span><span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class of people - events' participants.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code>kwargs</code>.</p>
+<p>Only keys that are present as
+attributes of the instance's class are allowed. These could be,
+for example, any mapped columns or relationships.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Person(Base):
+    &#34;&#34;&#34;Class of people - events&#39; participants.&#34;&#34;&#34;
+    __tablename__ = &#39;People&#39;
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the person (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the person.&#34;&#34;&#34;
+
+    surname: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Surname of the person. Must not be empty.&#34;&#34;&#34;
+
+    email: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Email of the person. Must contain `@` character.&#34;&#34;&#34;
+
+    participates: Mapped[List[Event]] = relationship(
+        secondary=participation, back_populates=&#34;invitees&#34;)
+    &#34;&#34;&#34;List of `Event` objects - events in which this person participates. &#34;&#34;&#34;
+
+    def serialize_basic(self: Person) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Event` objects from `participates` list \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Person) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Event` objects from `participates` will be serialized \
+            using `serialize_basic` function from `Event` class
+        - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.participates]
+        res[&#34;participates&#34;] = xs
+        return res
+
+    @validates(&#34;surname&#34;)
+    def validate_surname(self: Person, key: str, surname: str) -&gt; str:
+        &#34;&#34;&#34;Check if the surname is not empty.
+
+        Arguments:
+
+        - `self` - `Person` object
+        - `key` - always equal to `&#34;surname&#34;` \
+            (as the method is automatically invoked by the database)
+        - `surname` - value of the `surname` property&#34;&#34;&#34;
+
+        if len(surname) == 0:
+            raise ValueError(&#34;Surname cannot be empty&#34;)
+        return surname
+
+    @validates(&#34;email&#34;)
+    def validate_email(self: Person, key: str, email: str) -&gt; str:
+        &#34;&#34;&#34;Check if the email contains `@` character.
+
+        Arguments:
+
+        - `self` - `Person` object
+        - `key` - always equal to `&#34;email&#34;` \
+            (as the method is automatically invoked by the database)
+        - `email` - value of the `email` property&#34;&#34;&#34;
+
+        if &#34;@&#34; not in email:
+            raise ValueError(&#34;Incorrect email address&#34;)
+        return email</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></li>
+<li>sqlalchemy.orm.decl_api.DeclarativeBase</li>
+<li>sqlalchemy.inspection.Inspectable</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="app.sch_db_tools.Person.email"><code class="name">var <span class="ident">email</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Email of the person. Must contain <code>@</code> character.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.id"><code class="name">var <span class="ident">id</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Id of the person (integer), primary key. Automatically generated.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.name"><code class="name">var <span class="ident">name</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Name of the person.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.participates"><code class="name">var <span class="ident">participates</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>List of <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects - events in which this person participates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.surname"><code class="name">var <span class="ident">surname</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Surname of the person. Must not be empty.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.Person.serialize"><code class="name flex">
+<span>def <span class="ident">serialize</span></span>(<span>self: <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Recursively serialize:</p>
+<ul>
+<li><code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from <code>participates</code> will be serialized
+using <code>serialize_basic</code> function from <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> class</li>
+<li>other properties will be serialized as in <code>serialize_basic</code></li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize(self: Person) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Recursively serialize:
+
+    - `Event` objects from `participates` will be serialized \
+        using `serialize_basic` function from `Event` class
+    - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+    res = self.serialize_basic()
+    xs = [p.serialize_basic() for p in self.participates]
+    res[&#34;participates&#34;] = xs
+    return res</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.serialize_basic"><code class="name flex">
+<span>def <span class="ident">serialize_basic</span></span>(<span>self: <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Non-recursively serialize
+(<code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from <code>participates</code> list
+will <em>not</em> be serialized).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize_basic(self: Person) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Non-recursively serialize \
+        (`Event` objects from `participates` list \
+            will *not* be serialized).&#34;&#34;&#34;
+
+    return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.validate_email"><code class="name flex">
+<span>def <span class="ident">validate_email</span></span>(<span>self: <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>, key: str, email: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the email contains <code>@</code> character.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object</li>
+<li><code>key</code> - always equal to <code>"email"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>email</code> - value of the <code>email</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;email&#34;)
+def validate_email(self: Person, key: str, email: str) -&gt; str:
+    &#34;&#34;&#34;Check if the email contains `@` character.
+
+    Arguments:
+
+    - `self` - `Person` object
+    - `key` - always equal to `&#34;email&#34;` \
+        (as the method is automatically invoked by the database)
+    - `email` - value of the `email` property&#34;&#34;&#34;
+
+    if &#34;@&#34; not in email:
+        raise ValueError(&#34;Incorrect email address&#34;)
+    return email</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Person.validate_surname"><code class="name flex">
+<span>def <span class="ident">validate_surname</span></span>(<span>self: <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>, key: str, surname: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the surname is not empty.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object</li>
+<li><code>key</code> - always equal to <code>"surname"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>surname</code> - value of the <code>surname</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;surname&#34;)
+def validate_surname(self: Person, key: str, surname: str) -&gt; str:
+    &#34;&#34;&#34;Check if the surname is not empty.
+
+    Arguments:
+
+    - `self` - `Person` object
+    - `key` - always equal to `&#34;surname&#34;` \
+        (as the method is automatically invoked by the database)
+    - `surname` - value of the `surname` property&#34;&#34;&#34;
+
+    if len(surname) == 0:
+        raise ValueError(&#34;Surname cannot be empty&#34;)
+    return surname</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker"><code class="flex name class">
+<span>class <span class="ident">PersonWorker</span></span>
+<span>(</span><span>dict: dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Worker for <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> class.
+Performs adding, updating,
+fetching info about one or all <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects,
+looking up <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects with particular surname
+and deleting.</p>
+<p>Initialize a worker - set attributes listed in <code>properties</code>
+basing on the dictionary <code>dict</code>
+(<code>dict</code> <em>must</em> contain all properties from <code>properties</code>).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PersonWorker(Worker):
+    &#34;&#34;&#34;Worker for `Person` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Person` objects, \
+                looking up `Person` objects with particular surname \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Person id&#34;,
+                  &#34;name&#34;: &#34;Person name&#34;,
+                  &#34;surname&#34;: &#34;Person surname&#34;,
+                  &#34;email&#34;: &#34;Person email&#34;,
+                  &#34;participates&#34;:
+                  &#34;List of event ids in which this person participates&#34;}
+    &#34;&#34;&#34;Dictionary with description of the properties \
+        of the `Person` objects.&#34;&#34;&#34;
+
+    list_properties = [&#34;participates&#34;]
+    &#34;&#34;&#34;List of `Person` properties that are lists.&#34;&#34;&#34;
+
+    id: int | None
+    name: str | None
+    surname: str | None
+    email: str | None
+    participates: list[int] | list[Event]
+
+    def __init__(self: PersonWorker, dict: dict[str, Any]):
+        super().__init__(dict, PersonWorker.properties)
+
+    def add(self: PersonWorker, session: Session) -&gt; Person:
+        &#34;&#34;&#34;Add a `Person` object to a database \
+            basing on `self` properties. Return created `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = Person(name=self.name, surname=self.surname, email=self.email)
+        events_db = session.query(Event).filter(
+            Event.id.in_(self.participates)).all()
+        p.participates = events_db
+        session.add(p)
+        session.flush()
+        return p
+
+    def update(self: PersonWorker, session: Session) -&gt; Person | None:
+        &#34;&#34;&#34;Update a `Person` object in a database \
+            basing on `self` properties. Return updated `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        if self.participates is not None:
+            self.participates = session.query(Event).filter(
+                Event.id.in_(self.participates)).all()
+        p = session.query(Person).filter(Person.id == self.id).first()
+        super().updateWorker(p, PersonWorker.properties)
+        session.flush()
+        return p
+
+    def info(self: PersonWorker, session: Session) -&gt; Person | None:
+        &#34;&#34;&#34;Get info about a `Person` object from a database \
+            with `id` equal to `self.id`. Return `Person` object.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Person).filter(Person.id == self.id).first()
+        return p
+
+    def info_all(self: PersonWorker, session: Session) -&gt; list[Person]:
+        &#34;&#34;&#34;Get info about all `Person` objects from a database. \
+            Return list of `Person` objects.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        people = session.query(Person).all()
+        return people
+
+    def lookup(self: PersonWorker, session: Session) -&gt; list[Person]:
+        &#34;&#34;&#34;Get info about all `Person` objects \
+            with `surname` equal to `self.surname`. \
+                Return list of `Person` objects.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        people = session.query(Person).filter(
+            Person.surname == self.surname).all()
+        return people
+
+    def delete(self: PersonWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete a `Person` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information about `id` \
+                    of the deleted person.
+
+        Arguments:
+
+        - `self` - `PersonWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Person).filter(Person.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted person {self.id}&#34;}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.sch_db_tools.PersonWorker.email"><code class="name">var <span class="ident">email</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.id"><code class="name">var <span class="ident">id</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.list_properties"><code class="name">var <span class="ident">list_properties</span></code></dt>
+<dd>
+<div class="desc"><p>List of <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> properties that are lists.</p></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.name"><code class="name">var <span class="ident">name</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.participates"><code class="name">var <span class="ident">participates</span> : list[int] | list[<a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.properties"><code class="name">var <span class="ident">properties</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary with description of the properties
+of the <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects.</p></div>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.surname"><code class="name">var <span class="ident">surname</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.PersonWorker.add"><code class="name flex">
+<span>def <span class="ident">add</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object to a database
+basing on <code>self</code> properties. Return created <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add(self: PersonWorker, session: Session) -&gt; Person:
+    &#34;&#34;&#34;Add a `Person` object to a database \
+        basing on `self` properties. Return created `Person` object.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = Person(name=self.name, surname=self.surname, email=self.email)
+    events_db = session.query(Event).filter(
+        Event.id.in_(self.participates)).all()
+    p.participates = events_db
+    session.add(p)
+    session.flush()
+    return p</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete a <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>.
+Return dictionary with information about <code>id</code>
+of the deleted person.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self: PersonWorker, session: Session) -&gt; dict[str, str]:
+    &#34;&#34;&#34;Delete a `Person` object from a database \
+        with `id` equal to `self.id`. \
+            Return dictionary with information about `id` \
+                of the deleted person.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Person).filter(Person.id == self.id).first()
+    session.delete(p)
+    return {&#34;msg&#34;: f&#34;Deleted person {self.id}&#34;}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about a <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>. Return <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self: PersonWorker, session: Session) -&gt; Person | None:
+    &#34;&#34;&#34;Get info about a `Person` object from a database \
+        with `id` equal to `self.id`. Return `Person` object.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Person).filter(Person.id == self.id).first()
+    return p</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.info_all"><code class="name flex">
+<span>def <span class="ident">info_all</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects from a database.
+Return list of <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info_all(self: PersonWorker, session: Session) -&gt; list[Person]:
+    &#34;&#34;&#34;Get info about all `Person` objects from a database. \
+        Return list of `Person` objects.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    people = session.query(Person).all()
+    return people</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.lookup"><code class="name flex">
+<span>def <span class="ident">lookup</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects
+with <code>surname</code> equal to <code>self.surname</code>.
+Return list of <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lookup(self: PersonWorker, session: Session) -&gt; list[Person]:
+    &#34;&#34;&#34;Get info about all `Person` objects \
+        with `surname` equal to `self.surname`. \
+            Return list of `Person` objects.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    people = session.query(Person).filter(
+        Person.surname == self.surname).all()
+    return people</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PersonWorker.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self: <a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update a <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object in a database
+basing on <code>self</code> properties. Return updated <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self: PersonWorker, session: Session) -&gt; Person | None:
+    &#34;&#34;&#34;Update a `Person` object in a database \
+        basing on `self` properties. Return updated `Person` object.
+
+    Arguments:
+
+    - `self` - `PersonWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    if self.participates is not None:
+        self.participates = session.query(Event).filter(
+            Event.id.in_(self.participates)).all()
+    p = session.query(Person).filter(Person.id == self.id).first()
+    super().updateWorker(p, PersonWorker.properties)
+    session.flush()
+    return p</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></b></code>:
+<ul class="hlist">
+<li><code><a title="app.sch_db_tools.Worker.updateWorker" href="#app.sch_db_tools.Worker.updateWorker">updateWorker</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="app.sch_db_tools.Place"><code class="flex name class">
+<span>class <span class="ident">Place</span></span>
+<span>(</span><span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class of places where the events are held.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code>kwargs</code>.</p>
+<p>Only keys that are present as
+attributes of the instance's class are allowed. These could be,
+for example, any mapped columns or relationships.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Place(Base):
+    &#34;&#34;&#34;Class of places where the events are held.&#34;&#34;&#34;
+    __tablename__ = &#34;Places&#34;
+
+    id: MappedColumn[Any] = mapped_column(Integer, primary_key=True)
+    &#34;&#34;&#34;Id of the place (integer), primary key. Automatically generated.&#34;&#34;&#34;
+
+    name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Name of the place. Must not be empty.&#34;&#34;&#34;
+
+    street_name: MappedColumn[Any] = mapped_column(String, nullable=False)
+    &#34;&#34;&#34;Street name of the place.&#34;&#34;&#34;
+
+    street_number: MappedColumn[Any] = mapped_column(Integer)
+    &#34;&#34;&#34;Street number of the place. Must be a positive integer.&#34;&#34;&#34;
+
+    hosts_event: Mapped[List[Event]] = relationship(
+        &#34;Event&#34;, back_populates=&#34;place&#34;)
+    &#34;&#34;&#34;List of the `Event` objects - events held in this place.&#34;&#34;&#34;
+
+    def serialize_basic(self: Place) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Non-recursively serialize \
+            (`Event` objects from `hosts_event` list \
+                will *not* be serialized).&#34;&#34;&#34;
+
+        return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}
+
+    def serialize(self: Place) -&gt; dict[str, Any]:
+        &#34;&#34;&#34;Recursively serialize:
+
+        - `Event` objects from `hosts_event` will be serialized \
+            using `serialize_basic` function from `Event` class
+        - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+        res = self.serialize_basic()
+        xs = [p.serialize_basic() for p in self.hosts_event]
+        res[&#34;hosts_event&#34;] = xs
+        return res
+
+    @validates(&#34;name&#34;)
+    def validate_name(self: Place, key: str, name: str) -&gt; str:
+        &#34;&#34;&#34;Check if the `name` is not empty.
+
+        Arguments:
+
+        - `self` - `Place` object
+        - `key` - always equal to `&#34;name&#34;` \
+            (as the method is automatically invoked by the database)
+        - `name` - value of the `name` property
+        &#34;&#34;&#34;
+
+        if len(name) == 0:
+            raise ValueError(&#34;Name cannot be empty&#34;)
+        return name
+
+    @validates(&#34;street_number&#34;)
+    def validate_street_number(self: Place, key: str,
+                               street_number: int) -&gt; int:
+        &#34;&#34;&#34;Check if the `street_number` is a positive integer.
+
+        Arguments:
+
+        - `self` - `Event` object
+        - `key` - always equal to `&#34;street_number&#34;` \
+            (as the method is automatically invoked by the database)
+        - `street_number` - value of the `street_number` property
+        &#34;&#34;&#34;
+
+        if (not isinstance(street_number, int)) or street_number &lt;= 0:
+            raise ValueError(&#34;Street number must be positive number&#34;)
+        return street_number</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></li>
+<li>sqlalchemy.orm.decl_api.DeclarativeBase</li>
+<li>sqlalchemy.inspection.Inspectable</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="app.sch_db_tools.Place.hosts_event"><code class="name">var <span class="ident">hosts_event</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>List of the <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects - events held in this place.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.id"><code class="name">var <span class="ident">id</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Id of the place (integer), primary key. Automatically generated.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.name"><code class="name">var <span class="ident">name</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Name of the place. Must not be empty.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.street_name"><code class="name">var <span class="ident">street_name</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Street name of the place.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.street_number"><code class="name">var <span class="ident">street_number</span> : Union[sqlalchemy.orm.attributes.InstrumentedAttribute[~_T], ~_T]</code></dt>
+<dd>
+<div class="desc"><p>Street number of the place. Must be a positive integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(
+    self, instance: Optional[object], owner: Any
+) -&gt; Union[InstrumentedAttribute[_T], _T]:
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self.impl.supports_population and self.key in dict_:
+        return dict_[self.key]  # type: ignore[no-any-return]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            raise orm_exc.UnmappedInstanceError(instance) from err
+        return self.impl.get(state, dict_)  # type: ignore[no-any-return]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.Place.serialize"><code class="name flex">
+<span>def <span class="ident">serialize</span></span>(<span>self: <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Recursively serialize:</p>
+<ul>
+<li><code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from <code>hosts_event</code> will be serialized
+using <code>serialize_basic</code> function from <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> class</li>
+<li>other properties will be serialized as in <code>serialize_basic</code></li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize(self: Place) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Recursively serialize:
+
+    - `Event` objects from `hosts_event` will be serialized \
+        using `serialize_basic` function from `Event` class
+    - other properties will be serialized as in `serialize_basic`&#34;&#34;&#34;
+
+    res = self.serialize_basic()
+    xs = [p.serialize_basic() for p in self.hosts_event]
+    res[&#34;hosts_event&#34;] = xs
+    return res</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.serialize_basic"><code class="name flex">
+<span>def <span class="ident">serialize_basic</span></span>(<span>self: <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Non-recursively serialize
+(<code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> objects from <code>hosts_event</code> list
+will <em>not</em> be serialized).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def serialize_basic(self: Place) -&gt; dict[str, Any]:
+    &#34;&#34;&#34;Non-recursively serialize \
+        (`Event` objects from `hosts_event` list \
+            will *not* be serialized).&#34;&#34;&#34;
+
+    return {k: v for k, v in vars(self).items() if not k.startswith(&#39;_&#39;)}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.validate_name"><code class="name flex">
+<span>def <span class="ident">validate_name</span></span>(<span>self: <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>, key: str, name: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the <code>name</code> is not empty.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object</li>
+<li><code>key</code> - always equal to <code>"name"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>name</code> - value of the <code>name</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;name&#34;)
+def validate_name(self: Place, key: str, name: str) -&gt; str:
+    &#34;&#34;&#34;Check if the `name` is not empty.
+
+    Arguments:
+
+    - `self` - `Place` object
+    - `key` - always equal to `&#34;name&#34;` \
+        (as the method is automatically invoked by the database)
+    - `name` - value of the `name` property
+    &#34;&#34;&#34;
+
+    if len(name) == 0:
+        raise ValueError(&#34;Name cannot be empty&#34;)
+    return name</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.Place.validate_street_number"><code class="name flex">
+<span>def <span class="ident">validate_street_number</span></span>(<span>self: <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>, key: str, street_number: int) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the <code>street_number</code> is a positive integer.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code> object</li>
+<li><code>key</code> - always equal to <code>"street_number"</code>
+(as the method is automatically invoked by the database)</li>
+<li><code>street_number</code> - value of the <code>street_number</code> property</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@validates(&#34;street_number&#34;)
+def validate_street_number(self: Place, key: str,
+                           street_number: int) -&gt; int:
+    &#34;&#34;&#34;Check if the `street_number` is a positive integer.
+
+    Arguments:
+
+    - `self` - `Event` object
+    - `key` - always equal to `&#34;street_number&#34;` \
+        (as the method is automatically invoked by the database)
+    - `street_number` - value of the `street_number` property
+    &#34;&#34;&#34;
+
+    if (not isinstance(street_number, int)) or street_number &lt;= 0:
+        raise ValueError(&#34;Street number must be positive number&#34;)
+    return street_number</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker"><code class="flex name class">
+<span>class <span class="ident">PlaceWorker</span></span>
+<span>(</span><span>dict: dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Worker for <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> class.
+Performs adding, updating,
+fetching info about one or all <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects,
+looking up <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects with particular name
+and deleting.</p>
+<p>Initialize a worker - set attributes listed in <code>properties</code>
+basing on the dictionary <code>dict</code>
+(<code>dict</code> <em>must</em> contain all properties from <code>properties</code>).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PlaceWorker(Worker):
+    &#34;&#34;&#34;Worker for `Place` class. \
+        Performs adding, updating, \
+            fetching info about one or all `Place` objects, \
+                looking up `Place` objects with particular name \
+                    and deleting.&#34;&#34;&#34;
+
+    properties = {&#34;id&#34;: &#34;Place id&#34;,
+                  &#34;name&#34;: &#34;Place name&#34;,
+                        &#34;street_name&#34;: &#34;Street name&#34;,
+                        &#34;street_number&#34;: &#34;Street number&#34;}
+    &#34;&#34;&#34;Dictionary with description of the properties of the `Place` objects.&#34;&#34;&#34;
+
+    id: int
+    name: str | None
+    street_name: str | None
+    street_number: int | None
+
+    list_properties: list[str] = []
+    &#34;&#34;&#34;List of `Place` properties that are lists.&#34;&#34;&#34;
+
+    def __init__(self: PlaceWorker, dict: dict[str, Any]) -&gt; None:
+        super().__init__(dict, PlaceWorker.properties)
+
+    def add(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Add a `Place` object to a database \
+            basing on `self` properties. Return created `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = Place(name=self.name, street_name=self.street_name,
+                  street_number=self.street_number)
+        session.add(p)
+        session.flush()
+        return p
+
+    def update(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Update a `Place` object in a \
+            database basing on `self` properties. \
+                Return updated `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        super().updateWorker(p, PlaceWorker.properties)
+        session.flush()
+        return p
+
+    def info(self: PlaceWorker, session: Session) -&gt; Place | None:
+        &#34;&#34;&#34;Get info about a `Place` object from a database \
+            with `id` equal to `self.id`. Return `Place` object.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        return p
+
+    def info_all(self: PlaceWorker, session: Session) -&gt; list[Place]:
+        &#34;&#34;&#34;Get info about all `Place` objects from a database. \
+            Return list of `Place` objects.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        places = session.query(Place).all()
+        return places
+
+    def lookup(self: PlaceWorker, session: Session) -&gt; list[Place]:
+        &#34;&#34;&#34;Get info about all `Place` objects \
+            with `name` equal to `self.name`. \
+                Return list of `Place` objects.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        places = session.query(Place).filter(Place.name == self.name).all()
+        return places
+
+    def delete(self: PlaceWorker, session: Session) -&gt; dict[str, str]:
+        &#34;&#34;&#34;Delete a `Place` object from a database \
+            with `id` equal to `self.id`. \
+                Return dictionary with information about `id` \
+                    of the deleted place.
+
+        Arguments:
+
+        - `self` - `PlaceWorker` object
+        - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+        p = session.query(Place).filter(Place.id == self.id).first()
+        session.delete(p)
+        return {&#34;msg&#34;: f&#34;Deleted place {self.id}&#34;}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.sch_db_tools.PlaceWorker.id"><code class="name">var <span class="ident">id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.list_properties"><code class="name">var <span class="ident">list_properties</span> : list[str]</code></dt>
+<dd>
+<div class="desc"><p>List of <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> properties that are lists.</p></div>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.name"><code class="name">var <span class="ident">name</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.properties"><code class="name">var <span class="ident">properties</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary with description of the properties of the <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects.</p></div>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.street_name"><code class="name">var <span class="ident">street_name</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.street_number"><code class="name">var <span class="ident">street_number</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.PlaceWorker.add"><code class="name flex">
+<span>def <span class="ident">add</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object to a database
+basing on <code>self</code> properties. Return created <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add(self: PlaceWorker, session: Session) -&gt; Place | None:
+    &#34;&#34;&#34;Add a `Place` object to a database \
+        basing on `self` properties. Return created `Place` object.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = Place(name=self.name, street_name=self.street_name,
+              street_number=self.street_number)
+    session.add(p)
+    session.flush()
+    return p</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete a <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>.
+Return dictionary with information about <code>id</code>
+of the deleted place.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self: PlaceWorker, session: Session) -&gt; dict[str, str]:
+    &#34;&#34;&#34;Delete a `Place` object from a database \
+        with `id` equal to `self.id`. \
+            Return dictionary with information about `id` \
+                of the deleted place.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Place).filter(Place.id == self.id).first()
+    session.delete(p)
+    return {&#34;msg&#34;: f&#34;Deleted place {self.id}&#34;}</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about a <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object from a database
+with <code>id</code> equal to <code>self.id</code>. Return <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self: PlaceWorker, session: Session) -&gt; Place | None:
+    &#34;&#34;&#34;Get info about a `Place` object from a database \
+        with `id` equal to `self.id`. Return `Place` object.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Place).filter(Place.id == self.id).first()
+    return p</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.info_all"><code class="name flex">
+<span>def <span class="ident">info_all</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects from a database.
+Return list of <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info_all(self: PlaceWorker, session: Session) -&gt; list[Place]:
+    &#34;&#34;&#34;Get info about all `Place` objects from a database. \
+        Return list of `Place` objects.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    places = session.query(Place).all()
+    return places</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.lookup"><code class="name flex">
+<span>def <span class="ident">lookup</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> list[<a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info about all <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects
+with <code>name</code> equal to <code>self.name</code>.
+Return list of <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> objects.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lookup(self: PlaceWorker, session: Session) -&gt; list[Place]:
+    &#34;&#34;&#34;Get info about all `Place` objects \
+        with `name` equal to `self.name`. \
+            Return list of `Place` objects.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    places = session.query(Place).filter(Place.name == self.name).all()
+    return places</code></pre>
+</details>
+</dd>
+<dt id="app.sch_db_tools.PlaceWorker.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self: <a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a>, session: Session) ‑> <a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update a <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object in a
+database basing on <code>self</code> properties.
+Return updated <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> object.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code> object</li>
+<li><code>session</code> - <code>sqlalchemy.orm.Session</code> object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self: PlaceWorker, session: Session) -&gt; Place | None:
+    &#34;&#34;&#34;Update a `Place` object in a \
+        database basing on `self` properties. \
+            Return updated `Place` object.
+
+    Arguments:
+
+    - `self` - `PlaceWorker` object
+    - `session` - `sqlalchemy.orm.Session` object&#34;&#34;&#34;
+
+    p = session.query(Place).filter(Place.id == self.id).first()
+    super().updateWorker(p, PlaceWorker.properties)
+    session.flush()
+    return p</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></b></code>:
+<ul class="hlist">
+<li><code><a title="app.sch_db_tools.Worker.updateWorker" href="#app.sch_db_tools.Worker.updateWorker">updateWorker</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="app.sch_db_tools.Worker"><code class="flex name class">
+<span>class <span class="ident">Worker</span></span>
+<span>(</span><span>dict: dict[str, Any], properties: dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for database workers - performing actions on database.</p>
+<p>Initialize a worker - set attributes listed in <code>properties</code>
+basing on the dictionary <code>dict</code>
+(<code>dict</code> <em>must</em> contain all properties from <code>properties</code>).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Worker():
+    &#34;&#34;&#34;Base class for database workers - performing actions on database.&#34;&#34;&#34;
+
+    def __init__(self: Worker, dict: dict[str, Any],
+                 properties: dict[str, Any]) -&gt; None:
+        &#34;&#34;&#34;Initialize a worker - set attributes listed in `properties` \
+            basing on the dictionary `dict` \
+                (`dict` *must* contain all properties from `properties`).&#34;&#34;&#34;
+
+        for prop in properties:
+            setattr(self, prop, dict[prop] if prop in dict else None)
+
+    def updateWorker(self: Worker, p: Base | None,
+                     properties: dict[str, Any]) -&gt; None:
+        &#34;&#34;&#34;Update a database object - set attributes of `p` \
+            listed in `properties` basing on the `self` properties \
+                (`self` *does not have to* contain all properties \
+                    from `properties`).
+
+        Arguments:
+
+        - `self` - `Worker` object
+        - `p` - `Base` object (`Event`, `Place` or `Person`) \
+            which will be updated
+        - `properties` - dictionary of possible properties &#34;&#34;&#34;
+
+        for prop in properties:
+            self_prop = getattr(self, prop)
+            if self_prop is not None:
+                setattr(p, prop, self_prop)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></li>
+<li><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></li>
+<li><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="app.sch_db_tools.Worker.updateWorker"><code class="name flex">
+<span>def <span class="ident">updateWorker</span></span>(<span>self: <a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a>, p: <a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a> | None, properties: dict[str, Any]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update a database object - set attributes of <code>p</code>
+listed in <code>properties</code> basing on the <code>self</code> properties
+(<code>self</code> <em>does not have to</em> contain all properties
+from <code>properties</code>).</p>
+<p>Arguments:</p>
+<ul>
+<li><code>self</code> - <code><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></code> object</li>
+<li><code>p</code> - <code><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></code> object (<code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code>, <code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code> or <code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code>)
+which will be updated</li>
+<li><code>properties</code> - dictionary of possible properties</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateWorker(self: Worker, p: Base | None,
+                 properties: dict[str, Any]) -&gt; None:
+    &#34;&#34;&#34;Update a database object - set attributes of `p` \
+        listed in `properties` basing on the `self` properties \
+            (`self` *does not have to* contain all properties \
+                from `properties`).
+
+    Arguments:
+
+    - `self` - `Worker` object
+    - `p` - `Base` object (`Event`, `Place` or `Person`) \
+        which will be updated
+    - `properties` - dictionary of possible properties &#34;&#34;&#34;
+
+    for prop in properties:
+        self_prop = getattr(self, prop)
+        if self_prop is not None:
+            setattr(p, prop, self_prop)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app" href="index.html">app</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="app.sch_db_tools.act" href="#app.sch_db_tools.act">act</a></code></li>
+<li><code><a title="app.sch_db_tools.init" href="#app.sch_db_tools.init">init</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.sch_db_tools.Base" href="#app.sch_db_tools.Base">Base</a></code></h4>
+<ul class="">
+<li><code><a title="app.sch_db_tools.Base.metadata" href="#app.sch_db_tools.Base.metadata">metadata</a></code></li>
+<li><code><a title="app.sch_db_tools.Base.registry" href="#app.sch_db_tools.Base.registry">registry</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.Event" href="#app.sch_db_tools.Event">Event</a></code></h4>
+<ul class="">
+<li><code><a title="app.sch_db_tools.Event.collides" href="#app.sch_db_tools.Event.collides">collides</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.description" href="#app.sch_db_tools.Event.description">description</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.end_date" href="#app.sch_db_tools.Event.end_date">end_date</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.id" href="#app.sch_db_tools.Event.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.invitees" href="#app.sch_db_tools.Event.invitees">invitees</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.name" href="#app.sch_db_tools.Event.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.place" href="#app.sch_db_tools.Event.place">place</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.place_id" href="#app.sch_db_tools.Event.place_id">place_id</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.serialize" href="#app.sch_db_tools.Event.serialize">serialize</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.serialize_basic" href="#app.sch_db_tools.Event.serialize_basic">serialize_basic</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.start_date" href="#app.sch_db_tools.Event.start_date">start_date</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.validate_dates" href="#app.sch_db_tools.Event.validate_dates">validate_dates</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.validate_description" href="#app.sch_db_tools.Event.validate_description">validate_description</a></code></li>
+<li><code><a title="app.sch_db_tools.Event.validate_name" href="#app.sch_db_tools.Event.validate_name">validate_name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.EventWorker" href="#app.sch_db_tools.EventWorker">EventWorker</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.sch_db_tools.EventWorker.add" href="#app.sch_db_tools.EventWorker.add">add</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.collides" href="#app.sch_db_tools.EventWorker.collides">collides</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.delete" href="#app.sch_db_tools.EventWorker.delete">delete</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.description" href="#app.sch_db_tools.EventWorker.description">description</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.end_date" href="#app.sch_db_tools.EventWorker.end_date">end_date</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.id" href="#app.sch_db_tools.EventWorker.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.info" href="#app.sch_db_tools.EventWorker.info">info</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.info_all" href="#app.sch_db_tools.EventWorker.info_all">info_all</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.invitees" href="#app.sch_db_tools.EventWorker.invitees">invitees</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.list_properties" href="#app.sch_db_tools.EventWorker.list_properties">list_properties</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.lookup" href="#app.sch_db_tools.EventWorker.lookup">lookup</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.name" href="#app.sch_db_tools.EventWorker.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.place_id" href="#app.sch_db_tools.EventWorker.place_id">place_id</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.properties" href="#app.sch_db_tools.EventWorker.properties">properties</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.start_date" href="#app.sch_db_tools.EventWorker.start_date">start_date</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.time_collision" href="#app.sch_db_tools.EventWorker.time_collision">time_collision</a></code></li>
+<li><code><a title="app.sch_db_tools.EventWorker.update" href="#app.sch_db_tools.EventWorker.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.Person" href="#app.sch_db_tools.Person">Person</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.sch_db_tools.Person.email" href="#app.sch_db_tools.Person.email">email</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.id" href="#app.sch_db_tools.Person.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.name" href="#app.sch_db_tools.Person.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.participates" href="#app.sch_db_tools.Person.participates">participates</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.serialize" href="#app.sch_db_tools.Person.serialize">serialize</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.serialize_basic" href="#app.sch_db_tools.Person.serialize_basic">serialize_basic</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.surname" href="#app.sch_db_tools.Person.surname">surname</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.validate_email" href="#app.sch_db_tools.Person.validate_email">validate_email</a></code></li>
+<li><code><a title="app.sch_db_tools.Person.validate_surname" href="#app.sch_db_tools.Person.validate_surname">validate_surname</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.PersonWorker" href="#app.sch_db_tools.PersonWorker">PersonWorker</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.sch_db_tools.PersonWorker.add" href="#app.sch_db_tools.PersonWorker.add">add</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.delete" href="#app.sch_db_tools.PersonWorker.delete">delete</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.email" href="#app.sch_db_tools.PersonWorker.email">email</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.id" href="#app.sch_db_tools.PersonWorker.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.info" href="#app.sch_db_tools.PersonWorker.info">info</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.info_all" href="#app.sch_db_tools.PersonWorker.info_all">info_all</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.list_properties" href="#app.sch_db_tools.PersonWorker.list_properties">list_properties</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.lookup" href="#app.sch_db_tools.PersonWorker.lookup">lookup</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.name" href="#app.sch_db_tools.PersonWorker.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.participates" href="#app.sch_db_tools.PersonWorker.participates">participates</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.properties" href="#app.sch_db_tools.PersonWorker.properties">properties</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.surname" href="#app.sch_db_tools.PersonWorker.surname">surname</a></code></li>
+<li><code><a title="app.sch_db_tools.PersonWorker.update" href="#app.sch_db_tools.PersonWorker.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.Place" href="#app.sch_db_tools.Place">Place</a></code></h4>
+<ul class="">
+<li><code><a title="app.sch_db_tools.Place.hosts_event" href="#app.sch_db_tools.Place.hosts_event">hosts_event</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.id" href="#app.sch_db_tools.Place.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.name" href="#app.sch_db_tools.Place.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.serialize" href="#app.sch_db_tools.Place.serialize">serialize</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.serialize_basic" href="#app.sch_db_tools.Place.serialize_basic">serialize_basic</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.street_name" href="#app.sch_db_tools.Place.street_name">street_name</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.street_number" href="#app.sch_db_tools.Place.street_number">street_number</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.validate_name" href="#app.sch_db_tools.Place.validate_name">validate_name</a></code></li>
+<li><code><a title="app.sch_db_tools.Place.validate_street_number" href="#app.sch_db_tools.Place.validate_street_number">validate_street_number</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.PlaceWorker" href="#app.sch_db_tools.PlaceWorker">PlaceWorker</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.sch_db_tools.PlaceWorker.add" href="#app.sch_db_tools.PlaceWorker.add">add</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.delete" href="#app.sch_db_tools.PlaceWorker.delete">delete</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.id" href="#app.sch_db_tools.PlaceWorker.id">id</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.info" href="#app.sch_db_tools.PlaceWorker.info">info</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.info_all" href="#app.sch_db_tools.PlaceWorker.info_all">info_all</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.list_properties" href="#app.sch_db_tools.PlaceWorker.list_properties">list_properties</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.lookup" href="#app.sch_db_tools.PlaceWorker.lookup">lookup</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.name" href="#app.sch_db_tools.PlaceWorker.name">name</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.properties" href="#app.sch_db_tools.PlaceWorker.properties">properties</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.street_name" href="#app.sch_db_tools.PlaceWorker.street_name">street_name</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.street_number" href="#app.sch_db_tools.PlaceWorker.street_number">street_number</a></code></li>
+<li><code><a title="app.sch_db_tools.PlaceWorker.update" href="#app.sch_db_tools.PlaceWorker.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.sch_db_tools.Worker" href="#app.sch_db_tools.Worker">Worker</a></code></h4>
+<ul class="">
+<li><code><a title="app.sch_db_tools.Worker.updateWorker" href="#app.sch_db_tools.Worker.updateWorker">updateWorker</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
